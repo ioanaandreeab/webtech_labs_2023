@@ -38,8 +38,10 @@
 
 - **repository**
   - sursa principală a codului, un director care conține toate fișierele unui proiect, precum și istoricul acestora
-- **branch** - ramificație a versiunii de bază a proiectului, independentă, ce permite adăugarea unor noi comportamente, ce pot fi ulterior resincronizate și reintegrate - orice repository are un branch principal, ce poartă, în general, denumirea de _main_
-  🤔 denumirea de _master_ este încă prezentă în repository-urile vechi, însă norma actuală este de a utiliza denumirea _main_ - puteți afla mai multe [aici](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main) - structura arborescentă pe care o conferă branch-urile unui repository poate fi observată și în următoarea figură
+- **branch** - ramificație a versiunii de bază a proiectului, independentă, ce permite adăugarea unor noi comportamente, ce pot fi ulterior resincronizate și reintegrate
+   - orice repository are un branch principal, ce poartă, în general, denumirea de _main_
+  🤔 denumirea de _master_ este încă prezentă în repository-urile vechi, însă norma actuală este de a utiliza denumirea _main_ - puteți afla mai multe [aici](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main)
+   - structura arborescentă pe care o conferă branch-urile unui repository poate fi observată și în următoarea figură
   ![](https://uploads.sitepoint.com/wp-content/uploads/2019/06/155993572204-gitflow.png)
 - **commit**
   - reprezentare (snapshot) a stării codului proiectului la un anumit moment
