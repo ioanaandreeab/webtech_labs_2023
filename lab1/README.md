@@ -40,6 +40,7 @@
   - sursa principală a codului, un director care conține toate fișierele unui proiect, precum și istoricul acestora
 - **branch** - ramificație a versiunii de bază a proiectului, independentă, ce permite adăugarea unor noi comportamente, ce pot fi ulterior resincronizate și reintegrate
    - orice repository are un branch principal, ce poartă, în general, denumirea de _main_
+  
   🤔 denumirea de _master_ este încă prezentă în repository-urile vechi, însă norma actuală este de a utiliza denumirea _main_ - puteți afla mai multe [aici](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main)
    - structura arborescentă pe care o conferă branch-urile unui repository poate fi observată și în următoarea figură
   ![](https://uploads.sitepoint.com/wp-content/uploads/2019/06/155993572204-gitflow.png)
@@ -94,7 +95,11 @@
 ### 1.2 Creare repository
 
 - vom crea un prim repository de test pentru a ne familiariza cu platforma
-- accesăm https://github.com/new și completăm câmpurile: - repository name - description - bifăm opțiunea _Public_ (pentru teme și proiecte vom bifa opțiunea _Private_) - bifăm opțiunea _Add a README file_ (în care, ulterior, vom adăuga informații despre ce reprezintă proiectul nostru)
+- accesăm https://github.com/new și completăm câmpurile:
+  - repository name
+  - description
+- bifăm opțiunea _Public_ (pentru teme și proiecte vom bifa opțiunea _Private_)
+- bifăm opțiunea _Add a README file_ (în care, ulterior, vom adăuga informații despre ce reprezintă proiectul nostru)
   ![](https://github.com/ioanaandreeab/webtech_labs_2023/blob/main/lab1/assets/creare_repo.png?raw=true)
 - finalizăm crearea repository-ului
 
@@ -105,7 +110,7 @@
 ### 1.4 Clonarea repository-ului
 
 - după instalarea git vom deschide un terminal (comenzile git vor fi acum recunoscute de sistem)
-- în terminal vom executa comanda de clonare a repository-ului remote creat anterior (adresa se poate obține de pe pagina repository-ului și urmează structura https://github.com/<<username>>/<<repo-name>>.git)
+- în terminal vom executa comanda de clonare a repository-ului remote creat anterior (adresa se poate obține de pe pagina repository-ului și urmează structura https://github.com/username/repo-name.git)
 
 ```sh
 git clone https://github.com/ioanaandreeab/webtech_labs_2023.git
