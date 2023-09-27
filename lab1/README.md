@@ -3,13 +3,21 @@
 ### Conținut
 
 1. git - concepte de bază
+
    1.1 Crearea unui cont de GitHub
+   
    1.2 Crearea unui repository
+   
    1.3 Instalare git
+   
    1.4 Clonarea repository-ului
+   
    1.5 Versionarea codului
+   
 2. JavaScript
+
    2.1 JavaScript pe client
+   
    2.2 JavaScript pe server
 
 ## 1 git - concepte de bază
