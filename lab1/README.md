@@ -2,23 +2,23 @@
 
 ### Conținut
 
-1. git - concepte de bază
+1. [git - concepte de bază](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#1-git---concepte-de-baz%C4%83)
 
-   1.1 Crearea unui cont de GitHub
-   
-   1.2 Crearea unui repository
-   
-   1.3 Instalare git
-   
-   1.4 Clonarea repository-ului
-   
-   1.5 Versionarea codului
-   
-2. JavaScript
+   1.1 [Crearea unui cont de GitHub](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#11-creare-cont-github)
 
-   2.1 JavaScript pe client
-   
-   2.2 JavaScript pe server
+   1.2 [Crearea unui repository](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#12-creare-repository)
+
+   1.3 [Instalare git](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#13-instalare-git)
+
+   1.4 [Clonarea repository-ului](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#14-clonarea-repository-ului)
+
+   1.5 [Versionarea codului](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#15-versionarea-codului)
+
+2. [JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#2-javascript)
+
+   2.1 [JavaScript pe client](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#21-javascript-pe-client)
+
+   2.2 [JavaScript pe server](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab1#22-javascript-pe-server)
 
 ## 1 git - concepte de bază
 
@@ -39,11 +39,14 @@
 - **repository**
   - sursa principală a codului, un director care conține toate fișierele unui proiect, precum și istoricul acestora
 - **branch** - ramificație a versiunii de bază a proiectului, independentă, ce permite adăugarea unor noi comportamente, ce pot fi ulterior resincronizate și reintegrate
-   - orice repository are un branch principal, ce poartă, în general, denumirea de _main_
-  
+
+  - orice repository are un branch principal, ce poartă, în general, denumirea de _main_
+
   🤔 denumirea de _master_ este încă prezentă în repository-urile vechi, însă norma actuală este de a utiliza denumirea _main_ - puteți afla mai multe [aici](https://www.theserverside.com/feature/Why-GitHub-renamed-its-master-branch-to-main)
-   - structura arborescentă pe care o conferă branch-urile unui repository poate fi observată și în următoarea figură
-  ![](https://uploads.sitepoint.com/wp-content/uploads/2019/06/155993572204-gitflow.png)
+
+  - structura arborescentă pe care o conferă branch-urile unui repository poate fi observată și în următoarea figură
+    ![](https://uploads.sitepoint.com/wp-content/uploads/2019/06/155993572204-gitflow.png)
+
 - **commit**
   - reprezentare (snapshot) a stării codului proiectului la un anumit moment
   - fiecare commit este însoțit de un mesaj care descrie modificările care au fost introduse
