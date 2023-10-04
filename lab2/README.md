@@ -4,27 +4,31 @@
 
 1. [Web 101](#1-web-101)
 
-   1.1 Cum poate fi găsită o resursă pe Web?
+   1.1 [Cum poate fi găsită o resursă pe Web?](https://github.com/#11-cum-poate-fi-g%C4%83sit%C4%83-o-resurs%C4%83-pe-web)
 
-   1.2 Ce se întâmplă atunci când căutăm ceva pe Google?
+   1.2 [Ce se întâmplă atunci când căutăm ceva pe Google?](#12-ce-se-%C3%AEnt%C3%A2mpl%C4%83-atunci-c%C3%A2nd-c%C4%83ut%C4%83m-ceva-pe-google)
 
-   1.3 Ce acțiuni poate să aibă un utilizator pe Web?
+   1.3 [Ce acțiuni poate să aibă un utilizator pe Web?](#13-ce-ac%C8%9Biuni-poate-s%C4%83-aib%C4%83-un-utilizator-pe-web)
 
-   1.4 Care sunt componentele unei pagini web?
+   1.4 [Care sunt componentele unei pagini web?](#14-care-sunt-componentele-unei-pagini-web)
 
-2. Bazele JavaScript
+      1.4.1 [HTML](#141-html)
+   
+      1.4.2 [CSS](#142-css)
 
-   2.1 Ce este JavaScript?
+3. [Bazele JavaScript](#2-bazele-javascript)
 
-   2.2 Există variabile în JavaScript?
+   2.1 [Ce este JavaScript?](#21-ce-este-javascript)
 
-   2.3 Tipuri de date în JavaScript
+   2.2 [Există variabile în JavaScript?](#22-exist%C4%83-variabile-%C3%AEn-javascript)
 
-   2.4 Obiecte
+   2.3 [Tipuri de date în JavaScript](#23-tipuri-de-date-%C3%AEn-javascript)
 
-   2.5 Funcții
+   2.4 [Obiecte](#24-obiecte)
 
-   2.6 Arrays
+   2.5 [Funcții](#25-func%C8%9Bii)
+
+   2.6 [Arrays](#26-arrays)
 
 ## 1. Web 101
 
