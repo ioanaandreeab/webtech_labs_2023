@@ -8,15 +8,15 @@
 
    1.2 [Ce se întâmplă atunci când căutăm ceva pe Google?](#12-ce-se-%C3%AEnt%C3%A2mpl%C4%83-atunci-c%C3%A2nd-c%C4%83ut%C4%83m-ceva-pe-google)
 
-   1.3 [Ce acțiuni poate să aibă un utilizator pe Web?](#13-ce-ac%C8%9Biuni-poate-s%C4%83-aib%C4%83-un-utilizator-pe-web)
+   1.3 [Ce acțiuni poate să facă un utilizator pe Web?](#13-ce-ac%C8%9Biuni-poate-s%C4%83-aib%C4%83-un-utilizator-pe-web)
 
    1.4 [Care sunt componentele unei pagini web?](#14-care-sunt-componentele-unei-pagini-web)
 
-      1.4.1 [HTML](#141-html)
-   
-      1.4.2 [CSS](#142-css)
+   1.4.1 [HTML](#141-html)
 
-3. [Bazele JavaScript](#2-bazele-javascript)
+   1.4.2 [CSS](#142-css)
+
+2. [Bazele JavaScript](#2-bazele-javascript)
 
    2.1 [Ce este JavaScript?](#21-ce-este-javascript)
 
@@ -59,15 +59,15 @@ https://wikipedia.org/wiki/World_Wide_Web
 
 🤔 Am menționat în secțiunea anterioară că resursele pot fi și multimedia, nu doar text. Totuși, protocolul folosit are în denumire cuvântul "text". Acest lucru se datorează faptului că protocolul a fost creat atunci când singurele resurse partajate erau de tip text. Între timp, protocolul a evoluat pentru a accepta și alte tipuri de resurse, dar denumirea a rămas aceeași.
 
-- **domeniul** - un identificator unic pentru fiecare website (gazdă) - _de exemplu, google_
+- **domeniul** - un identificator unic pentru fiecare website (gazdă) - _de exemplu, google.com_
 
   - există și conceptul de subdomeniu - diviziune a unui domeniu care poate fi folosită pentru a separa diferite secțiuni ale unui site web sau pentru a oferi acces la resurse sau servicii specifice pe o adresă web distinctă
   - spre exemplu, suita de servicii Google e accesibilă pe diferite subdomenii, precum
 
   ```sh
-  mail.google.com
-  drive.google.com
-  careers.google.com
+    mail.google.com
+    drive.google.com
+    careers.google.com
   ```
 
 - **calea către resursă** - (opțională) permite identificarea unei anumite resurse a unui website
@@ -75,7 +75,7 @@ https://wikipedia.org/wiki/World_Wide_Web
 - un URL poate conține și **parametri** prin care sunt transmise informații suplimentare pentru cererea făcută, sub formatul _cheie=valoare_, separați prin simbolul _&_
   - de obicei, putem regăsi parametri în URL atunci când facem o căutare pe un magazin online
   ```sh
-  https://www.aboutyou.ro/b/shop/nike-sportswear-53709?category=20204
+    https://www.aboutyou.ro/b/shop/nike-sportswear-53709?category=20204
   ```
 
 ### 1.2 Ce se întâmplă atunci când căutăm ceva pe Google?
@@ -91,9 +91,9 @@ Pentru a înțelege mai bine cum e aplicată arhitectura _client-server_ în cad
 **Arhitectura client-server** poate fi observată și în următoarea figură, similară cu cea pe care am văzut-o și în cadrul primului seminar:
 ![](https://www.easeus.com/images/en/wiki-news/what-is-client-server-network.png)
 
-### 1.3 Ce acțiuni poate să aibă un utilizator pe Web?
+### 1.3 Ce acțiuni poate să facă un utilizator pe Web?
 
-În cadrul exemplului referitor la căutarea pe Google am menționat de _metode și verbe_. _Metodele_ specifice requesturilor determină acțiunile pe care trebuie să le efectueze serverul pe resursele cerute de client. Astfel, un client poate să:
+În cadrul exemplului referitor la căutarea pe Google am menționat de _metode și verbe_. _Metodele_ specifice requesturilor determină acțiunile pe care trebuie să le efectueze serverul asupra resurselor cerute de client. Astfel, un client poate să:
 
 - creeze o resursă (**POST**)
 - listeze o resursă (**GET**)
@@ -128,14 +128,14 @@ De multe ori un client va cere o anumită pagină web. Pagina web primită drept
 - exemplu de structură a unei pagini web simple:
 
 ```html
-<html>
-  <head>
-    <title>Webtech 2023</title>
-  </head>
-  <body>
-    <p>Hello, Web!</p>
-  </body>
-</html>
+  <html>
+    <head>
+      <title>Webtech 2023</title>
+    </head>
+    <body>
+      <p>Hello, Web!</p>
+    </body>
+  </html>
 ```
 
 - e important de notat faptul că, în esență, fiecare pagină web este o _structură arborescentă_ în care nodul părinte este întotdeauna tag-ul **"html"**
@@ -168,44 +168,44 @@ Există mai multe modalități de a aplica stilul asupra elementelor HTML, și a
 
   - în interiorul tag-ului **"style"** din "head"
     ```html
-    <html>
-      <head>
-        <title>Webtech 2023</title>
-        <style>
-          p {
-            color: red;
-          }
-        </style>
-      </head>
-      <body>
-        <p>Hello, Web!</p>
-      </body>
-    </html>
+      <html>
+        <head>
+          <title>Webtech 2023</title>
+          <style>
+            p {
+              color: red;
+            }
+          </style>
+        </head>
+        <body>
+          <p>Hello, Web!</p>
+        </body>
+      </html>
     ```
   - folosind atributul "style" al tag-urilor (_inline_)
     ```html
-    <p style="color:red;">Hello, Web!</p>
+      <p style="color:red;">Hello, Web!</p>
     ```
 
 - prin intermediul unui fișier extern
 
 ```css
 /* fișierul styles.css */
-p {
-  color: red;
-}
+  p {
+    color: red;
+  }
 ```
 
 ```html
-<html>
-  <head>
-    <title>Webtech 2023</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <p>Hello, Web!</p>
-  </body>
-</html>
+  <html>
+    <head>
+      <title>Webtech 2023</title>
+      <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+      <p>Hello, Web!</p>
+    </body>
+  </html>
 ```
 
 Pentru a identifica elementul HTML căruia dorim să-i definim reguli de stil există mai multe tipuri de **selectori**:
@@ -213,33 +213,33 @@ Pentru a identifica elementul HTML căruia dorim să-i definim reguli de stil ex
 - pe baza elementului HTML
 
 ```css
-p {
-  color: red;
-}
+  p {
+    color: red;
+  }
 ```
 
 - pe baza clasei elementului
 
 ```css
-.paragraph {
-  color: red;
-}
+  .paragraph {
+    color: red;
+  }
 ```
 
 ```html
-<p class="paragraph">Hello web</p>
+  <p class="paragraph">Hello web</p>
 ```
 
 - pe baza id-ului elementului
 
 ```css
-#first-paragraph {
-  color: red;
-}
+  #first-paragraph {
+    color: red;
+  }
 ```
 
 ```html
-<p id="first-paragraph">Hello web</p>
+  <p id="first-paragraph">Hello web</p>
 ```
 
 - exemplele pe care le avem ilustrate mai sus sunt din ce în ce mai specifice (mai exacte, vizează din ce în ce mai puține elemente)
@@ -259,13 +259,13 @@ Totuși, chiar și cu avantajul prezentării estetice a informației, utilizator
 În Java, am declara o variabilă în acest fel:
 
 ```java
-public String name = "John Doe";
+  public String name = "John Doe";
 ```
 
 în timp ce în JavaScript această instrucțiune ar deveni:
 
 ```js
-let name = "John Doe";
+  let name = "John Doe";
 ```
 
 JavaScript știe tipul de variabilă care trebuie atribuit pentru ceea ce vrem să declarăm, fără să fie nevoie să specificăm _explicit_.
@@ -273,12 +273,12 @@ Există **3** cuvinte cheie folosite pentru declararea variabilelor - **var, let
 O altă diferență dintre let și var este vizibilă în ceea ce privește contextul în care acestea sunt accesibile (numim acest concept _scoping_). _Var_ este **function scoped**, adică este accesibil în cadrul funcțiilor, iar _let_ este **block scoped**, adică este vizibil în cadrul blocurilor de cod. Ce înseamnă mai exact acest lucru? Să luăm următorul exemplu!
 
 ```js
-function iterateTest() {
-  for (let i = 0; i < 5; i++) {
-    // i e vizibil aici
+  function iterateTest() {
+    for (let i = 0; i < 5; i++) {
+      // i e vizibil aici
+    }
+    // i nu e vizibil aici
   }
-  // i nu e vizibil aici
-}
 ```
 
 Dacă am fi declarat variabila i folosind _var_, aceasta ar fi fost vizibilă în ambele locuri și am fi observat și un aspect interesant la afișarea acesteia în afara blocului iterativ.
@@ -287,13 +287,13 @@ Dacă am fi declarat variabila i folosind _var_, aceasta ar fi fost vizibilă î
 Un comportament specific JavaScript este **hoistingul**. Acesta se referă la comportamentul JavaScript de a muta toate declarările de variabile la _începutul contextului curent_. Variabilele sunt hoistate diferit în funcție de cuvântul cheie folosit. În cazul lui _var_, variabilele sunt **declarate ȘI inițializate** cu valoarea _undefined_, în timp ce _let_ și _const_ sunt **DOAR declarate**.
 
 ```js
-console.log(a); // afișează 'undefined', conform inițializării implicite
-var a; // declarare
+  console.log(a); // afișează 'undefined', conform inițializării implicite
+  var a; // declarare
 ```
 
 ```js
-console.log(a); // aruncă o excepție de tip ReferenceError deoarece nu este inițializată
-let a; // declarare
+  console.log(a); // aruncă o excepție de tip ReferenceError deoarece nu este inițializată
+  let a; // declarare
 ```
 
 🤔 Comportamentul diferit pe care îl are var în ceea ce privește hoistingul este motivul principal pentru care utilizarea acestui cuvânt cheie este descurajată în prezent. Un dezvoltator nu ar trebui să poată utiliza variabile înainte ca acestea să fie declarate, deoarece acest lucru poate duce la erori ori comportamente neașteptate ale codului scris.
@@ -313,19 +313,19 @@ Pe lângă tipurile de date primitive pe care le-am discutat deja, există și *
 Un exemplu de obiect poate fi:
 
 ```js
-const myCar = {
-  color: "red",
-  year: 2020,
-  brand: "Toyota",
-};
+  const myCar = {
+    color: "red",
+    year: 2020,
+    brand: "Toyota",
+  };
 ```
 
 Fiecare proprietate a obiectului este definită printr-o **cheie** (ex. color) și o **valoare** corespunzătoare (ex. 'red').
 Proprietățile obiectelor pot fi accesate astfel:
 
 ```js
-myCar.color; // returnează 'red'
-myCar["color"]; // returnează 'red'
+  myCar.color; // returnează 'red'
+  myCar["color"]; // returnează 'red'
 ```
 
 Un aspect de notat este faptul că _aproape_ orice în JavaScript este un obiect. Acest lucru introduce o problematică mai complexă, legată de partea OOP din JavaScript. Moștenidrea în JavaScript este posibilă în _2 feluri_ - folosind **clase** și extinzându-le și utilizând ceea ce poartă denumirea de **moștenire prin prototip** (_prototypal inheritance_) - o metodă prin care un obiect poate moșteni proprietăție și metodele unui alt obiect și adăuga noi proprietăți/metode, fără a depinde de obiectul de bază. Cea de-a doua modalitate, cea prototipală, se bazează pe conceptul de _agregare_. În acest sens, clasele în JavaScript sunt considerate a fi _syntactic sugar_, deoarece mecanismul aplicat este, de fapt, același ca la moștenirea prototipală, însă este prezentat mai familiar pentru programatorii obișnuiți cu limbaje OOP.
@@ -338,28 +338,28 @@ Un aspect de notat este faptul că _aproape_ orice în JavaScript este un obiect
 În mod tradițional, o funcție este scrisă astfel:
 
 ```js
-function sayHello() {
-  console.log("Hello!");
-}
-// apelul funcției
-sayHello(); // afișează "Hello!"
+  function sayHello() {
+    console.log("Hello!");
+  }
+  // apelul funcției
+  sayHello(); // afișează "Hello!"
 ```
 
 O funcție poate avea mai multe argumente al căror număr poate să fie _cunoscut_ sau _necunoscut_ (**variable length arguments**). Astfel, avem următoarele situații:
 
 ```js
-// funcția acceptă un singur argument
-function sayName(name) {
-  console.log(name);
-}
+  // funcția acceptă un singur argument
+  function sayName(name) {
+    console.log(name);
+  }
 
-function sayDescription(name, age, ...extraInfo) {
-  console.log(name);
-  console.log(age);
-  console.log(extraInfo); // afișează restul argumentelor trimise
-}
+  function sayDescription(name, age, ...extraInfo){
+    console.log(name);
+    console.log(age);
+    console.log(extraInfo); // afișează restul argumentelor trimise
+  }
 
-sayDescription("John Doe", 24, "blond", "2 cats");
+  sayDescription("John Doe", 24, "blond", "2 cats");
 ```
 
 🤔 Argumentul extraInfo este precedat de _spread operator_. Puteți citi mai multe despre acesta [aici.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax)
@@ -367,7 +367,7 @@ sayDescription("John Doe", 24, "blond", "2 cats");
 **ES6** (a doua revizie majoră a JavaScript) a introdus **arrow functions**, care permite scrierea funcțiilor conform unei sintaxe mai simpliste:
 
 ```js
-const sayHello = () => console.log("Hello!");
+  const sayHello = () => console.log("Hello!");
 ```
 
 Totuși, funcțiile tradiționale și arrow functions nu se comportă _în totalitate_ la fel. Cea mai importantă diferență rezidă în ceea ce reprezintă cuvântul cheie _"this"_. În cazul arrow functions, "this" se referă _doar_ la contextul curent al funcției respective. De ce e important de reținut această diferență? Dacă funcția pe care o scriem ar fi metoda unei clase, arrow function-ul nu ar ști nimic despre "this"-ul acelei clase.
@@ -379,7 +379,7 @@ Un **array** este o structură de date care poate stoca **mai multe valori** la 
 Acesta poate fi reprezentat astfel:
 
 ```js
-const arr = [1, 2, 3, 4];
+  const arr = [1, 2, 3, 4];
 ```
 
 Fiecare element poate fi accesat utilizând **index-ul**, care începe de la valoarea **0**. (de ex. arr[0] este 1)
