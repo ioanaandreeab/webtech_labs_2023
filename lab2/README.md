@@ -45,7 +45,7 @@ Web-ul funcționează pe baza modelului **client-server**, despre care vom discu
 
 ### 1.1 Cum poate fi găsită o resursă pe Web?
 
-Am văzut că Web-ul are o vastă colecție de resurse pe care orice dispozitiv cu un browser și acces la Internet le poate vizualiza, dar cum poate fi găsită o anumită astfel de resursa? Răspunsul este unul destul de simplu - acest lucru este posibil grație **URL** (_Uniform Resource Locator_). Fiecare URL are următoarea structură:
+Am văzut că Web-ul are o vastă colecție de resurse pe care orice dispozitiv cu un browser și acces la Internet le poate vizualiza, dar cum poate fi găsită o anumită astfel de resursă? Răspunsul este unul destul de simplu - acest lucru este posibil grație **URL** (_Uniform Resource Locator_). Fiecare URL are următoarea structură:
 
 ```sh
 [protocol]://[domeniu]/[cale/către/resursă?parametru1=valoare1&parametru2=valoare2]
@@ -84,7 +84,7 @@ Pentru a înțelege mai bine cum e aplicată arhitectura _client-server_ în cad
 În esență, fiecare acțiune întreprinsă de un utilizator pe Web are următorii pași:
 
 - utilizatorul (**clientul**) trimite o **cerere** (un request) către un **server** - să spunem, în cazul nostru, că navigăm pe pagina _google.com_ și introducem textul "florării București"
-- serverul primește cererea, stabilește acțiunea necesară conform scopului (_metoda/verbului_) request-ului - în exemplul nostru vrem să listăm toate florăriile din București, deci serverul Google caută în baza sa de date înregistrări pentru florăriile din București
+- serverul primește cererea, stabilește acțiunea necesară conform scopului (_metoda/verbul_) request-ului - în exemplul nostru vrem să listăm toate florăriile din București, deci serverul Google caută în baza sa de date înregistrări pentru florăriile din București
 - serverul trimite un **răspuns** către client, fie el de succes ori de eroare, după caz, în funcție de rezultatul procesării
 - clientul primește răspunsul, în acest caz florăriile din București 🌸
 
@@ -138,7 +138,7 @@ De multe ori un client va cere o anumită pagină web. Pagina web primită drept
 </html>
 ```
 
-- e importat de notat faptul că, în esentă, fiecare pagină web este o _structură arborescentă_, în care nodul părinte este întotdeauna tag-ul **"html"**
+- e important de notat faptul că, în esență, fiecare pagină web este o _structură arborescentă_ în care nodul părinte este întotdeauna tag-ul **"html"**
 
 🤔 _Devtools_ este o unealtă foarte utilă pentru dezvoltarea web. Puteți accesa orice website la alegere și inspecta structura lui. Găsiți [aici](https://nira.com/chrome-developer-tools/) o resursă care explică mai multe despre fiecare opțiune din cadrul devtools!
 
@@ -162,7 +162,7 @@ CSS poate fi utilizat pentru (și nu numai):
 
 🤔 Aveți [aici](https://htmlcheatsheet.com/css/) un cheatsheet pentru cele mai importante concepte CSS
 
-Există mai multe modalități de a aplica stilul asupra elementelor HTML, și anume în cadrul aceluiași fișier, ori prin importarea unui fișier separat în care sunt definite regulile de stil. A doua variantă este cea recomandată 😊.
+Există mai multe modalități de a aplica stilul asupra elementelor HTML, și anume, în cadrul aceluiași fișier, ori prin importarea unui fișier separat în care sunt definite regulile de stil. A doua variantă este cea recomandată 😊.
 
 - în cadrul aceluiași fișier:
 
@@ -182,7 +182,7 @@ Există mai multe modalități de a aplica stilul asupra elementelor HTML, și a
       </body>
     </html>
     ```
-  - folosind atributul "style" al tag-urilor (inline)
+  - folosind atributul "style" al tag-urilor (_inline_)
     ```html
     <p style="color:red;">Hello, Web!</p>
     ```
@@ -281,7 +281,7 @@ function iterateTest() {
 }
 ```
 
-Dacă am fi declarat variabila i folosind _var_, aceasta ar fi fost vizibilă în ambele locuri și am fi observat și un aspect interesant la logarea acesteia în afara blocului iterativ.
+Dacă am fi declarat variabila i folosind _var_, aceasta ar fi fost vizibilă în ambele locuri și am fi observat și un aspect interesant la afișarea acesteia în afara blocului iterativ.
 🤔 Executați exemplul în ambele cazuri și încercați să vă gândiți, inainte de a executa, ce va afișa consola în cazul în care folosim var, în afara blocului iterativ.
 
 Un comportament specific JavaScript este **hoistingul**. Acesta se referă la comportamentul JavaScript de a muta toate declarările de variabile la _începutul contextului curent_. Variabilele sunt hoistate diferit în funcție de cuvântul cheie folosit. În cazul lui _var_, variabilele sunt **declarate ȘI inițializate** cu valoarea _undefined_, în timp ce _let_ și _const_ sunt **DOAR declarate**.
