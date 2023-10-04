@@ -2,7 +2,7 @@
 
 ### Conținut
 
-1. Web 101
+1. [Web 101](#1-web-101)
 
    1.1 Cum poate fi găsită o resursă pe Web?
 
