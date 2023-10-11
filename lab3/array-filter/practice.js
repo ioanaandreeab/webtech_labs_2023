@@ -14,7 +14,7 @@ const dogs = [
 ];
 
 
-// const filteredDogs =  use array filter method to get a list of dogs that are dachshund
+// const filteredDogs =  folosește metoda filter pentru a obține o listă cu toți cățeii din specia dachshund
 
 console.log(dogs);
 // console.log(filteredDogs);

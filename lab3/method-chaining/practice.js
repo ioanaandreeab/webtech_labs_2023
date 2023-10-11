@@ -7,9 +7,10 @@ const books = [
     { title: "The Hobbit", author: "J.R.R. Tolkien", year: 1937 },
 ];
 
-/* given the list of books, use method chaining to return a string with the first name 
-of authors of books written after the year 1930, sorted chronologically from present to past,
-joined by commas
+/* folosește un chain de metode aplicabile pe un array pentru a returna
+un string care să conțina numele de familie al tuturor autorilor care au publicat o carte după anul 1930
+numele autorilor trebuie să apară în ordine invers cronologică în funcție de anul în care au publicat
+numele autorilor trebuie să fie separat prin virgulă și spațiu
 */
 // const firstNameAuthors =
 

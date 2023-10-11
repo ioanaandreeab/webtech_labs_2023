@@ -5,11 +5,17 @@
 
     1.1 [Caracteristici generale](#11-caracteristici-generale)
 
-    1.2 [Copierea array-urilor](#12-copierea-array-urilor)
+    1.2 [Accesarea datelor](#12-accesarea-datelor)
 
     1.3 [Proprietatea length](#13-proprietatea-length)
 
-    1.4 [Metode specifice](#14-metode-specifice)
+    1.4 [Manipularea datelor](#14-manipularea-datelor)
+
+    1.5 [Operatorul rest și operatorul spread](#15-operatorul-rest-%C8%99i-operatorul-spread)
+
+    1.6 [Copierea array-urilor](#16-copierea-array-urilor)
+
+    1.7 [Metode specifice](#17-metode-specifice)
 
 2. [Exerciții arrays](#2-exerci%C8%9Bii-arrays)
 
@@ -34,9 +40,127 @@ De notat următoarele aspecte:
 ```
 - ca tip de dată, **un array este un obiect** (țineți minte, aproape orice în JavaScript este un obiect)
 
-- fiecare element poate fi accesat utilizând **index-ul**, care începe de la valoarea **0**. (de ex. arr[0] este 1)
+### 1.2 Accesarea datelor
+- fiecare element poate fi accesat utilizând **index-ul**, care începe de la valoarea **0**
+```js
+    const arr = [1, "web", {day: "Thursday"}];
 
-### 1.2 Copierea array-urilor
+    // accesare directă
+    console.log(arr[0]);
+    console.log(arr[1]);
+
+    // accesarea se poate face prin utilizarea unei alte variabile
+    const idx = 2;
+    console.log(arr[idx]);
+
+    // de asemenea, un array poate fi destructurat în elementele componente
+    const [first, second, third] = arr;
+    console.log(first);
+    console.log(second);
+    console.log(third);
+```
+
+### 1.3 Proprietatea length
+
+- proprietatea **length** returnează numărul de elemente dintr-un array (lungimea acestuia)
+```js
+    const fruits = [];
+    fruits.push("banana", "apple", "peach");
+    console.log(fruits.length); // 3
+
+    // ce credeți că se va întâmpla dacă modificăm explicit dimensiunea unui array?
+    fruits.length = 10;
+    console.log(fruits);
+    console.log(fruits.length);
+```
+
+### 1.4 Manipularea datelor
+
+Există mai multe metode pe care le putem folosi pentru a manipula un array, și anume:
+
+- pentru a adăuga elemente într-un array putem folosi metoda **push**
+```js
+    const arr = [1, 2, 3, 4];
+
+    arr.push(5);
+    console.log(arr);
+```
+
+- pentru a elimina (și returna) ultimul element dintr-un array putem folosi metoda **pop** (astfel, array-ul se comportă ca o stivă)
+    - putem extrage primul element din array cu metoda **shift**
+```js
+    const arr = [1, 2, 3, 4];
+
+    const lastElem = arr.pop();
+    console.log(lastElem);
+    console.log(arr);
+```
+
+- pentru ștergerea unui anumit element din array putem folosi metoda **splice**
+    - metoda splice poate fi folosită și pentru a modifica ori adăuga elemente în array
+    ```js
+        const arr = [1, 2, 3, 4];
+
+        // ștergerea unui element de la poziția 0
+        const removedElement = arr.splice(0, 1);
+        console.log(removedElement);
+        console.log(arr);
+    ```
+
+    - JavaScript permite și utilizarea keyword-ului _delete_ pentru a șterge valorile din cadrul unui array, însă, spre deosebire de splice, acesta nu va șterge și poziția ocupată din array, lăsând un element gol
+    ```js
+        const arr = [1, "web", {day: "Tuesday"}];
+
+        delete arr[2];
+
+        console.log(arr);
+    ```
+
+- pentru concatenarea a două array-uri putem folosi metoda **concat**
+```js
+    const arr = [1, "web", {day: "Tuesday"}];
+    const arr2 = [2, 3, 4];
+
+    // concatenarea nu se va face in-place
+    // ci va rezulta un array ce va conține ambele array-uri
+    const combined = arr.concat(arr2);
+
+    console.log(combined);
+```
+
+- pentru extragerea unui subșir din cadrul unui array se poate folosi metoda **slice** (a nu se confunda cu _splice_)
+```js
+    const arr = [1, 2, 3, 4];
+
+    console.log(arr.slice(0, 2));
+```
+
+### 1.5 Operatorul rest și operatorul spread
+
+- Array-urile beneficiază de existența a doi operatori foarte puternici care, în ciuda faptului că utilizează aceeași notație (...), au efecte complet opuse
+
+- Operatorul rest permite trimiterea unui număr variabil de parametri într-o funcție, încapsulând mai multe variabile individuale într-un array (l-am văzut și în seminarul trecut în cazul funcțiilor cu argumente de lungime variabilă)
+```js
+    // operatorul rest poate fi folosit doar ca ultim parametru în definirea unei funcții
+    function checkRestOp(...params) {
+        params.forEach(param => console.log(param));
+    }
+
+    checkRestOp(1, 2, 3, 4, 5);
+```
+- Operatorul spread permite expandarea unui array în elementele componente
+
+```js
+    function functionWith3Params(x, y, z) {
+        console.log(x);
+        console.log(y);
+        console.log(z);
+    }
+
+    const arr = [1, 2, 3];
+    functionWith3Params(...arr);
+```
+### 1.6 Copierea array-urilor
 
 În majoritatea cazurilor în care încrecăm să facem o copie a unui array, aceasta este de fapt un **shallow copy**. Acest aspect este strâns legat cu faptul că array-urile sunt _reference types_, care, spre deosebire de primitive, sunt copiate prin referință. Ce înseamnă asta în practică?
 
@@ -94,16 +218,7 @@ Putem realiza deep clone pentru arrays folosind metodele **JSON.stringify()** ș
     // [1, 2, 4, {name: 'Ioana', id: 1}]
 ```
 
-### 1.3 Proprietatea length
-
-- proprietatea **length** returnează numărul de elemente dintr-un array (lungimea acestuia)
-```js
-    const fruits = [];
-    fruits.push("banana", "apple", "peach");
-    console.log(fruits.length); // 3
-```
-
-### 1.4 Metode specifice
+### 1.7 Metode specifice
 
 Vom în continuare despre **metodele specifice array-urilor**, care permit manipularea informațiilor stocate. Multe dintre aceste metode au o funcție **callback** drept argument. 
 

@@ -1,6 +1,6 @@
-// write a function that receives a string with a pattern for missing words
-// and a variable length argument which represents the tokens that will be replaced
-// in the original string
+// completează corpul funcției astfel încât să obții un string rezultat din 
+// adăugarea token-urilor primite ca parametru în cadrul string-ului primit ca parametru
+// in funcție de poziție
 
 const formatString = (string, ...tokens) => {
 

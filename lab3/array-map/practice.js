@@ -4,7 +4,7 @@ const products = [
     { name: 'Tablet', price: 300 },
 ];
 
-// const productsWithDiscountedPrices = // use array map to add a discount of 10% to the price of each product
+// const productsWithDiscountedPrices = // folosește metoda map pentru a adăuga un discount de 10% fiecărui produs
 // console.log(productsWithDiscountedPrices);
 
 /* expected output:

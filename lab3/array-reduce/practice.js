@@ -5,9 +5,9 @@ const songs = [
     {name: 'Biig Piig - Sunny', duration: 167}
 ];
 
-// const totalDurationInSeconds = // use reduce method to calculate the total duration of the playlist
+// const totalDurationInSeconds = // folosește metoda reduce pentru a calcula durata totală a playlist-ului în secunde
 
 // console.log(totalDurationInSeconds);
 // expected: 734
 
-// extra: calculate the duration in minutes and remaining seconds
+// extra: calculează durata totală a playlist-ului în minute și secunde

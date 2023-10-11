@@ -24,5 +24,5 @@ const objectsToSort = [
 
 const sortField = 'yearOfBirth';
 
-// const sortByField = a function that sorts the provided array by the value of sortingField
-// console.log(sortField(objectsToSort, sortField));
+// const sortByField = o funcție care să sorteze crescător array-ul după câmpul indicat de variabila sortingField
+console.log(sortField(objectsToSort, sortField));
