@@ -331,7 +331,8 @@ Să ne uităm acum la câteva exemple cu cele mai folosite metode specifice arra
     ```
 
 - **flat**
-    - permite "aplanarea" un array multidimensional, transformându-l într-un array unidimensional
+    - permite "aplanarea" un array multidimensional, transformându-l într-un array ce are cu o dimensiune mai puțin
+    - se poate aplica succesiv de mai multe ori pentru a obține, în final, un array unidimensional
     ```js
         const array = [1, 2, [3, 4, [5, 6]]];
 
