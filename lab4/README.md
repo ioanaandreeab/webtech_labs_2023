@@ -25,7 +25,7 @@
 
 **Ce este un closure?**
 
-= concept fundamental care se referă la capacitatea unei funcții de a **păstra acces la variabilele din cadrul contextului** în care a fost creată, chiar și **după ce acea funcție a fost încheiată** sau a ieșit din contextul său imediat. În esență, un closure este o funcție internă (o funcție definită în interiorul altei funcții) care păstrează legătura cu variabilele din funcția părinte.
+= concept fundamental care se referă la capacitatea unei funcții de a **păstra acces la variabilele din cadrul contextului** în care a fost creată, chiar și **după ce acea funcție a fost încheiată** sau a ieșit din contextul său imediat. De cele mai multe ori, un closure este implementat ca o funcție internă (o funcție definită în interiorul altei funcții) care păstrează legătura cu variabilele din funcția părinte.
 
 - Conform MDN, un closure este **încapsularea** unei funcții cu referințele contextului său (lexical environment)
 
@@ -214,7 +214,7 @@ Constructorul este o metodă specială pentru crearea și inițializarea unui ob
     console.log(examplePers.name);
 ```
 
-- Observăm în exemplul dat și existența unor metode speciale - _get_ și _set_ (metode pe care le-am mai întâlnit și la limbaje precum Java, C#) - pentru manipulearea proprietăților clasei
+- Observăm în exemplul dat și existența unor metode speciale - _get_ și _set_ (metode pe care le-am mai întâlnit și la limbaje precum C#) - pentru manipularea proprietăților clasei
 
 - De asemenea, se folosește **_** pentru a evita coliziunile de nume între proprietate și metodele set/get 
 
