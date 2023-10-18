@@ -347,7 +347,7 @@ Dacă parcurgem lanțul prototipal vom observa că fiecare clasă din JavaScript
     ```js
     class MyCustomError extends Error {
         constructor(message) {
-            super(message); .
+            super(message);
             this.name = 'MyCustomError'; 
         }
     }
