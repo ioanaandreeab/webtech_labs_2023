@@ -3,6 +3,10 @@
 ### Conținut
 1. [Closures](#1-closures)
 
+    1.1 [Scope](#11-scope)
+    
+    1.2 [Contextul unui closure](#12-contextul-unui-scope)
+
 2. [OOP](#2-oop)
 
     2.1 [Ce este o clasă în JavaScript?](#21-ce-este-o-clas%C4%83-%C3%AEn-javascript)
@@ -15,7 +19,7 @@
 
     1.5 [Constructor functions & prototipuri](#25-constructor-functions-%C8%99i-prototipuri)
 
-3. [Excepții]()
+3. [Erori (excepții)](#3-erori-excep%C8%9Bii)
 
 ## 1. Closures
 
@@ -23,22 +27,94 @@
 
 = concept fundamental care se referă la capacitatea unei funcții de a **păstra acces la variabilele din cadrul contextului** în care a fost creată, chiar și **după ce acea funcție a fost încheiată** sau a ieșit din contextul său imediat. În esență, un closure este o funcție internă (o funcție definită în interiorul altei funcții) care păstrează legătura cu variabilele din funcția părinte.
 
-- conform MDN, este încapsularea unei funcții cu referințele contextului său (lexical environment)
-- în JavaScript, closure-urile sunt create de fiecare dată când o funcție este creată
+- Conform MDN, un closure este **încapsularea** unei funcții cu referințele contextului său (lexical environment)
 
-```js
+- În JavaScript, closure-urile sunt create de fiecare dată când o funcție este creată
+
+- Pentru a înțelege mai bine conceptul de closure, trebuie să ne reamintim de un concept discutat anterior, acela de _scope_ (pe care îl putem traduce aproximativ ca domeniu)
+
+![Scopes and closures](https://opensource.com/sites/default/files/uploads/execution-context.png)
+
+### 1.1 Scope
+
+- În JavaScript, există 2 tipuri mari de scopes:
+    - **Global scope**
+        - cuprinde tot domeniul unui program
+        - variabilele declarate aici poartă numele de _variabile globale_
+        - variabilele declarate aici pot fi accesate și modificate din orice zonă a programului, pe tot parcursul execuției acestuia
+
+    - **Local scope**
+        - variabilele declarate aici poartă numele de _variabile locale_
+        - variabilele declarate aici au o durată de viață limitată, fiind dezalocate în momentul în care scope-ul declarării este distrus
+        - se ramifică în alte două subtipuri:
+            - **Function scope**
+                - definit în momentul executării unei funcții
+                - poate accesa variabilele globale și pe cele declarate la nivel de funcție
+            
+            - **Block scope**
+                - definit în momentul executării unui bloc de instrucțiuni (if, while, for, etc)
+                - poate accesa variabilele globale, variabilele declarate la nivelul funcției în care blocul este definit și variabilele declarate la nivelul blocului
+
+- O analogie extrasă din [acest articol](https://blog.codeanalogies.com/2017/11/22/how-javascript-variable-scoping-is-just-like-multiple-levels-of-government/) compară cele 3 tipuri distince de scopes cu legile care, adesea, sunt definite la mai multe niveluri
+    ```js
+    const humanRights1 = "All human beings are free and equal";
+    const humanRights2 = "No discrimination";
+
+    // drepturile omului sunt aplicabile și în Europa
+    function europe(country) {
+        const europeanLaw = "General Data Protection Regulation (GDPR)";
+
+        // drepturile omului și legile europene sunt aplicabile și în România, împreună cu celelalte legi și reglementări locale
+        if (country === "Romania") {
+            const publicHoliday1 = "1 Decembrie";
+        }
+    }
+    ```
+
+### 1.2 Contextul unui scope
+- Similar cu modul în care variabilele sunt accesibile în raport cu scope-ul în care au fost definite, un closure va putea accesa:
+    - variabilele definite la nivelul propriei funcții
+    - variabilele din funcția părinte
+    - variabilele globale
+    ```js
+    const a = 1;
+    
+    function outerFunction(x) {
+        return function middleFunction(y) {
+            return function innerFunction(z) {
+                // poate accesa a global 
+                // x din outerFunction
+                // y din middleFunction
+                // z din propria definiție
+                console.log(a + x + y + z); 
+            }
+        }
+    }
+
+    const x = outerFunction(1);
+    const xx = x(1);
+
+    // va afișa 4
+    xx(1);
+    ```
+
+- Un closure va stoca valorile variabilelor din momentul în care este apelat, fiind un mecanism foarte puternic de **încapsulare a datelor**
+    ```js
     function init() {
         let name = "Mozilla"; 
+
         function displayName() {
-            // inner function, that forms the closure
-            console.log(name); // use variable declared in the parent function
+            // funcția care formează closure-ul
+            console.log(name); // variabilă inițializată în context
         }
+        
         displayName();
     }
-    init();
-```
 
-- o utilizare comună pentru closure este simularea mecanismului de caching (pe care o regăsiți și în exemplele din acest seminar)
+    init();
+    ```
+
+- O utilizare comună pentru closure este simularea mecanismului de caching (pe care o regăsiți și în exemplele din acest seminar)
 
 🤔 Puteți viziona [acest clip](https://www.youtube.com/watch?v=vKJpN5FAeF4) (are doar 100 de secunde) pentru mai multe explicații pentru closures.
 
@@ -138,11 +214,45 @@ Constructorul este o metodă specială pentru crearea și inițializarea unui ob
     console.log(examplePers.name);
 ```
 
-- obsrevăm în exemplul dat și existența unor metode speciale - _get_ și _set_ - pentru manipulearea proprietăților clasei
+- Observăm în exemplul dat și existența unor metode speciale - _get_ și _set_ (metode pe care le-am mai întâlnit și la limbaje precum Java, C#) - pentru manipulearea proprietăților clasei
 
-### 2.4 Proprietăți statice
+- În JavaScript, o metodă definită într-o clasă va fi implementată printr-o funcție atașată prototipului părinte
 
-- proprietățile statice (metode și atribute) sunt definite pe clasă în sine, în loc de în cadrul fiecărei instanțe
+- Pe lângă metodele asociate unei instanțe, putem defini metode statice prin utilizarea keyowrd-ului static, ce vor putea fi apelate la nivel de clasă, nu la nivel de obiect
+```js
+    class Person {
+        static greet() {
+            console.log("Hello!");
+        }
+    }
+
+    Person.greet();
+```
+
+### 2.4 Proprietăți
+
+- Proprietățile unei clase pot fi definite la nivelul blocului principal al clasei sau direct în constructor și pot fi publice sau private (precedate de #)
+
+```js
+    class Person {
+        name;
+        // private, can't be accessed directly, 
+        // but through a getter and updated using a setter
+        #location;
+
+        constructor(name, age, location) {
+            this.name = name;
+            this.age = age;
+            this.#location = location;
+        }
+
+        greet() {
+            console.log(`Hello, I'm ${this.name} and I'm ${this.age} years old!`);
+        }
+    }
+```
+
+- Precum în cazul metodelor, proprietățile statice sunt definite pe clasă în sine, în loc de în cadrul fiecărei instanțe
 ```js
     class MathUtils {
         // atribut static
@@ -213,23 +323,74 @@ Dacă parcurgem lanțul prototipal vom observa că fiecare clasă din JavaScript
 
 🤔 Moștenirea în JavaScript poate fi un concept mai dificil de înțeles în primă instanță - [aici](https://levelup.gitconnected.com/prototypal-inheritance-the-big-secret-behind-classes-in-javascript-e7368e76e92a) e un articol foarte bun pentru comparația dintre moștenirea folosind clase și cea prototipală
 
-## 3. Excepții
+## 3. Erori (excepții)
 
-Uneori, este necesar să introducem anumite restricții în codul pe care îl scriem. Pentru a valida, spre exemplu, tipul datelor trimise putem folosi:
-```js
-    const greet = (name) => {
-        if (typeof name === "string") {
-            console.log(`Hello, ${name}`);
-        } else {
-            throw new Error("The name should be a string");
+- Uneori, este necesar să introducem anumite restricții în codul pe care îl scriem
+
+- Erorile, similare excepțiilor din limbaje precum Java și C#, reprezintă un obiect asociat unor evenimente excepționale ce pot apărea pe durata execuției unui program
+
+- O listă completă a erorilor predefinite din JavaScript poate fi regăsită [aici](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors)
+
+- Erorile pot fi generate automat, de către interpretor la executarea unei instrucțiuni eronate, sau programatic, prin utilizarea keyword-ului **throw**
+
+    ```js
+    function throwIfZero(n) {
+        if (n === 0) {
+            throw new TypeError("The number should not be 0");
+        }
+
+        return console.log(n * n);
+    }
+    ```
+
+- În completarea tipurilor de erori predefinite pot fi create erori custom, prin extinderea clasei de bază _Error_, ce pot fi utilizate pentru stabilirea unor restricții la nivel de aplicație
+    ```js
+    class MyCustomError extends Error {
+        constructor(message) {
+            super(message); .
+            this.name = 'MyCustomError'; 
         }
     }
 
-    try {
-        greet();
-        } catch (error) {
-            console.log(error);
+    function divide(a, b) {
+        if (b === 0) {
+            throw new MyCustomError("Division by zero is not allowed.");
+        }
+        return a / b;
+    }
+    ```
+
+- Un mecanism la fel de important este mecanismul de gestionare a excepțiilor, cunoscut sub numele de mecanismul _try/catch/finally_
+    ```js
+        const greet = (name) => {
+            if (typeof name === "string") {
+                console.log(`Hello, ${name}`);
+            } else {
+                throw new TypeError("The name should be a string");
+            }
+        }
+
+        try {
+            // instrucțiuni ce pot declanșa apariția unei erori
+            greet();
+        } catch (e) {
+            // instrucțiuni apelate în cazul interceptării unei erori    
+            console.log(e);
         } finally {
             // instrucțiuni apelate indiferent de rezultatul funcției
+        }
+    ```
+
+- Pentru gestionarea în mod diferit a mai multor tipuri de erori, blocul catch poate fi definit sub forma
+    ```js
+    catch(error) {
+        if (e instanceof RangeError) {
+            // execută un tip specific de instrucțiuni pentru erorile de tipul RangeError
+        } else if (e instanceof TypeError) {
+            // execută un tip specific de instrucțiuni pentru erorile de tipul TypeError
+        } else {
+            // altfel aruncă excepția mai departe
+            throw e; 
+        }
     }
-```
+    ```
