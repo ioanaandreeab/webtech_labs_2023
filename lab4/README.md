@@ -193,12 +193,12 @@ Constructorul este o metodă specială pentru crearea și inițializarea unui ob
 
         // getter
         get name() {
-            return this.name;
+            return this._name;
         }
 
         // setter
         set name(newName) {
-            this.name = newName;
+            this._name = newName;
         }
 
         greet() {
@@ -215,6 +215,8 @@ Constructorul este o metodă specială pentru crearea și inițializarea unui ob
 ```
 
 - Observăm în exemplul dat și existența unor metode speciale - _get_ și _set_ (metode pe care le-am mai întâlnit și la limbaje precum Java, C#) - pentru manipulearea proprietăților clasei
+
+- De asemenea, se folosește **_** pentru a evita coliziunile de nume între proprietate și metodele set/get 
 
 - În JavaScript, o metodă definită într-o clasă va fi implementată printr-o funcție atașată prototipului părinte
 
