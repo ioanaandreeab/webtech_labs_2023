@@ -1,4 +1,4 @@
-# Seminar 4 - Closures, OOP și excepții
+# Seminar 4 - Closures, OOP și erori
 
 ### Conținut
 1. [Closures](#1-closures)
@@ -55,7 +55,7 @@
                 - definit în momentul executării unui bloc de instrucțiuni (if, while, for, etc)
                 - poate accesa variabilele globale, variabilele declarate la nivelul funcției în care blocul este definit și variabilele declarate la nivelul blocului
 
-- O analogie extrasă din [acest articol](https://blog.codeanalogies.com/2017/11/22/how-javascript-variable-scoping-is-just-like-multiple-levels-of-government/) compară cele 3 tipuri distince de scopes cu legile care, adesea, sunt definite la mai multe niveluri
+- O analogie extrasă din [acest articol](https://blog.codeanalogies.com/2017/11/22/how-javascript-variable-scoping-is-just-like-multiple-levels-of-government/) compară cele 3 tipuri distincte de scopes cu legile care, adesea, sunt definite la mai multe niveluri
     ```js
     const humanRights1 = "All human beings are free and equal";
     const humanRights2 = "No discrimination";
