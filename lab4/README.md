@@ -5,7 +5,7 @@
 
     1.1 [Scope](#11-scope)
     
-    1.2 [Contextul unui closure](#12-contextul-unui-scope)
+    1.2 [Contextul unui closure](#12-contextul-unui-closure)
 
 2. [OOP](#2-oop)
 
@@ -71,7 +71,7 @@
     }
     ```
 
-### 1.2 Contextul unui scope
+### 1.2 Contextul unui closure
 - Similar cu modul în care variabilele sunt accesibile în raport cu scope-ul în care au fost definite, un closure va putea accesa:
     - variabilele definite la nivelul propriei funcții
     - variabilele din funcția părinte
