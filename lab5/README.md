@@ -179,7 +179,7 @@ console.log('Heavy operation completed');
     doOperation();
 ```
 - Observăm în acest exemplu că este foarte greu de urmărit modul în care funcțiile callback se apelează una pe alta și felul în care informația este transmisă între funcții
-    - Funcția _displayDinosaurs_ depinde de rezultatul funcțiilor precedente care obțin, progresiv, informații despre dinozauri
+
 - O astfel de situație poartă denumirea de _callback hell_ și este motivul pentru care au fost introduse promise-urile
 
 ## 3. Promise
