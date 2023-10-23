@@ -1,3 +1,5 @@
+// https://pokeapi.co/ -- API docs
+
 const pokemonApi = 'https://pokeapi.co/api/v2/';
 const selectedPokemon = 'eevee';
 
