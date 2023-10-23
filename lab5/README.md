@@ -402,3 +402,38 @@ Un promise poate trece prin următoarele stări:
 🤔 Puteți citi [aici](https://javascript.plainenglish.io/promise-in-javascript-with-all-the-methods-b7357196a57e) și despre celelalte două metode atașare care nu au fost discutate - race și any
 
 ## 4. Async/await
+
+- ES8 (ES2017) a introdus o nouă modalitate de gestionare a operațiunilor asincrone, mai intuitivă, prin utilizarea cuvintelor cheie async/await
+- Termenul **async** anunță faptul că funcția respectivă **returnează un promise**
+    - Chiar dacă valoarea returnată nu este explicit un promise, mecanismul JavaScript va împacheta valoarea returnată într-un promise
+```js
+    async function fetchUserDetails() {
+        // simulează un apel către un server remote
+        // returnează info despre user
+        return {'name': 'Michael', 'likes': ['movies', 'teaching']};
+    }
+```
+- Cuvântul cheie **await** marchează așteptarea rezolvării unui promise pentru a putea continua execuția celorlalte instrucțiuni
+    - await se poate folosi _doar_ în cadrul unui context asincron
+```js
+    async function displayUserDetails() {
+        const user = await fetchUserDetails();
+        console.log(user);
+    }
+```
+
+**Gestionarea erorilor cu try/catch**
+
+- În contextul în care un promise care este "așteptat" aruncă o eroare, blocul în care se realizează apelul poate fi înglobat într-un context try/catch pentru a prinde erorile ce pot apărea
+
+```js
+    async function displayUserDetails() {
+        try {
+            const user = await fetchUserDetails
+            ();
+            // folosire data
+        } catch (error) {
+            // gestiune erori
+        }
+    }
+```
