@@ -40,15 +40,15 @@
 
 ```js
     function firstTask() {
-    console.log("Task 1");
+        console.log("Task 1");
     }
 
     function secondTask() {
-    console.log("Task 2");
+        console.log("Task 2");
     }
 
     function thirdTask() {
-    console.log("Task 3");  
+        console.log("Task 3");  
     }
 
     firstTask();
@@ -121,7 +121,7 @@
     console.log("Start of script");
 
     setTimeout(function() {
-    console.log("First timeout completed");
+        console.log("First timeout completed");
     }, 2000);
 
     console.log("End of script");
@@ -292,8 +292,8 @@ Un promise poate trece prin următoarele stări:
     function fetchData() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-            const data = Math.random();
-            resolve(data);
+                const data = Math.random();
+                resolve(data);
             }, 1000);
         });
     }
@@ -325,7 +325,7 @@ Un promise poate trece prin următoarele stări:
     function simulateError() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-        reject("Something went wrong");
+            reject("Something went wrong");
         }, 1000);
     });
     }
@@ -354,7 +354,7 @@ Un promise poate trece prin următoarele stări:
     const resolvedPromise = Promise.resolve("Successful value.");
 
     resolvedPromise.then((result) => {
-    console.log(result);
+        console.log(result);
     });
 ```
 - Analog, pentru _Promise.reject()_ este creat un promise care este respins cu eroarea transmisă
@@ -362,7 +362,7 @@ Un promise poate trece prin următoarele stări:
     const rejectedPromise = Promise.reject("Did not succeed.");
 
     rejectedPromise.catch((error) => {
-    console.error("Error:", error);
+        console.error("Error:", error);
     });
 ```
 
@@ -445,8 +445,7 @@ Un promise poate trece prin următoarele stări:
 ```js
     async function displayUserDetails() {
         try {
-            const user = await fetchUserDetails
-            ();
+            const user = await fetchUserDetails();
             // folosire data
         } catch (error) {
             // gestiune erori
