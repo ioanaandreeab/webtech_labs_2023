@@ -85,9 +85,9 @@
 - La execuția codului se poate observa că mesajul _"Heavy operation completed"_ este afișat la consolă după câteva momente (timp în care funcția _performHeavyOperation_ a rulat)
 - Acest dezavantaj este cu atât mai relevant în contextul JavaScript, care a fost creat pentru a integra elemente dinamice în paginile web
 
-    - Dacă rulăm exemplul anterior în browser, vom observa că, pe toată durata de execuție a metodei _performHeavyOperation_, pagina nu mai răspunde evenimentelor generate, deoarece JavaScript, un limbaj single-threaded la bază, va executa instrucțiunile în ordinea în care aceasta au fost invocate
+    - Dacă rulăm exemplul anterior în browser, vom observa că, pe toată durata de execuție a metodei _performHeavyOperation_, pagina nu mai răspunde evenimentelor generate, deoarece JavaScript, un limbaj single-threaded la bază, va executa instrucțiunile în ordinea în care acestea au fost invocate
 
-- Pentru un limbaj single-threaded precum JavaScript, blocarea thread-ului principal nu poate fi evitată în momentul în care o instrucțiune intensivă se află în execuție, însă, în general, în aplicațiile interactive, operațiunile intesive sunt evitate, fiind înlocuite, în schimb, cu operațiuni de intrare/ieșire (I/O) care, în regim sincron, produc același efect de blocare
+- Pentru un limbaj single-threaded precum JavaScript, blocarea thread-ului principal nu poate fi evitată în momentul în care o instrucțiune intensivă se află în execuție, însă, în general, în aplicațiile interactive, operațiunile intensive sunt evitate, fiind înlocuite, în schimb, cu operațiuni de intrare/ieșire (I/O) care, în regim sincron, produc același efect de blocare
 
 - Din acest motiv, JavaScript oferă suport nativ pentru multiple tehnici de _programare asincronă_
 
@@ -95,7 +95,7 @@
 ### 1.2 Programare asincronă în JavaScript
 
 - Programarea asincronă este o paradigmă în cadrul căreia codul este posibilă execuția codului **independent** de firul principal de execuție, fiind astfel _non-blocking_
-- Programarea asincronă permite asfel **execuția mai multor task-uri în același timp**, ele nedepinzând de finalizarea acțiunii precedente
+- Programarea asincronă permite astfel **execuția mai multor task-uri în același timp**, ele nedepinzând de finalizarea acțiunii precedente
 ![async programming](https://www.freecodecamp.org/news/content/images/2023/01/image-336.png)
 
 - În JavaScript, majoritatea operațiunilor asincrone au la bază **evenimente de intrare/ieșire**, atât pe back-end, cât și pe front-end:
