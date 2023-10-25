@@ -71,20 +71,25 @@
 - Totuși, programarea sincronă este problematică în ceea ce privește operațiile consumatoare de timp și resurse
 - Pentru a ilustra acest aspect, să privim următorul exemplu:
 ```js
-function performHeavyOperation() {
-    let x = 0;
-    for (let i = 0; i < 1000000000; i++) {
-        x += i;
+    function performHeavyOperation() {
+        let x = 0;
+        for (let i = 0; i < 1000000000; i++) {
+            x += i;
+        }
     }
-}
 
-performHeavyOperation();
+    performHeavyOperation();
 
-console.log('Heavy operation completed');
+    console.log('Heavy operation completed');
 ```
 - La execuția codului se poate observa că mesajul _"Heavy operation completed"_ este afișat la consolă după câteva momente (timp în care funcția _performHeavyOperation_ a rulat)
-- Acest lucru devine și mai important în contextul în care astfel de operațiuni pot fi întâlnite și în cazul unei aplicații web cu interfață; în acest scenariu, cât timp procesarea intensivă ar avea loc, utilizatorul nu ar putea interacționa în niciun fel cu restul aplicației
-- Din acest motiv, JavaScript are suport și pentru _programarea asincronă_
+- Acest dezavantaj este cu atât mai relevant în contextul JavaScript, care a fost creat pentru a integra elemente dinamice în paginile web
+
+    - Dacă rulăm exemplul anterior în browser, vom observa că, pe toată durata de execuție a metodei _performHeavyOperation_, pagina nu mai răspunde evenimentelor generate, deoarece JavaScript, un limbaj single-threaded la bază, va executa instrucțiunile în ordinea în care aceasta au fost invocate
+
+- Pentru un limbaj single-threaded precum JavaScript, blocarea thread-ului principal nu poate fi evitată în momentul în care o instrucțiune intensivă se află în execuție, însă, în general, în aplicațiile interactive, operațiunile intesive sunt evitate, fiind înlocuite, în schimb, cu operațiuni de intrare/ieșire (I/O) care, în regim sincron, produc același efect de blocare
+
+- Din acest motiv, JavaScript oferă suport nativ pentru multiple tehnici de _programare asincronă_
 
 
 ### 1.2 Programare asincronă în JavaScript
@@ -93,11 +98,23 @@ console.log('Heavy operation completed');
 - Programarea asincronă permite asfel **execuția mai multor task-uri în același timp**, ele nedepinzând de finalizarea acțiunii precedente
 ![async programming](https://www.freecodecamp.org/news/content/images/2023/01/image-336.png)
 
-- Majoritatea operațiunilor asincrone în JavaScript se împart în:
+- În JavaScript, majoritatea operațiunilor asincrone au la bază **evenimente de intrare/ieșire**, atât pe back-end, cât și pe front-end:
+
+    - apelarea unui serviciu extern
+    - executarea unui query în baza de date
+    - gestionarea evenimentelor declanșate de interacțiunea unui utilizator cu o pagină web
+    - încărcarea sau descărcarea unui fișier
+
+- În general, operațiunile asincrone în JavaScript se împart în:
     - **evenimente sau funcții Browser API/Web API**
         - evenimente declanșate de elemente DOM (onclick, mouseover)
         - funcții precum _setTimeout_
     - **promise** (despre care vom discuta pe larg în secțiunile următoare)
+
+
+- Programarea asincronă utilizează evenimentele ca principal mecanism de notificare, permițând unor instrucțiuni să fie executate abia în momentul în care o operațiune de lungă durată a fost finalizată, fără ca thread-ul principal să fi așteptat în mod activ finalizarea acestei
+
+    ![Gestionarea pasivă a evenimentelor](https://accedia.com/wp-content/uploads/old/async-programming.png)
 
 - Următorul exemplu ilustrează modul în care se comportă instrucțiunile asincrone în JavaScript:
 ```js
@@ -115,8 +132,7 @@ console.log('Heavy operation completed');
     End of script
     First timeout completed
 ```
-- Metoda _setTimeout_ execută funcția după un anumit timp (simulând astfel o operațiune ce consumă resurse și timp) în mod _asincron_, ceea ce înseamnă că programul va continua execuția următoarei linii de cod fără a aștepta ca durata specificată să se încheie, neblocând execuția celorlalte instrucțiuni
-    - adesea, în JavaScript, operațiunile asincrone sunt necesare pentru a comunica cu servere web remote/locale
+- Metoda _setTimeout_ execută funcția după un anumit timp (simulând astfel o operațiune ce consumă resurse și timp - cum ar fi apelarea unui serviciu web ori descărcarea unei imagini) în mod _asincron_, ceea ce înseamnă că programul va continua execuția următoarei linii de cod fără a aștepta ca durata specificată să se încheie, neblocând execuția celorlalte instrucțiuni
 
 - Pentru a sumariza vizual diferențele dintre programarea sincronă și cea asincronă putem observa:
 ![sync vs async](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Y8o7ak12D24-kdMnDVKFYg.png)
