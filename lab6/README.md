@@ -580,7 +580,7 @@ npm install --save random
         app.use(express.json());
 
         // atașarea rutelor specifice unui film
-        app.use("/movie", moviesRouter);
+        app.use("/movies", moviesRouter);
 
         app.listen(PORT, () => console.log(`Server started on http://localhost:${PORT}`));
     ```
