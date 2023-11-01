@@ -496,38 +496,15 @@ npm install --save random
 
         export const router = express.Router();
 
-        router.get("/", (req, res) => {
-            res.send({ records: movieController.getMovies() });
-        });
+        router.get("/", movieController.getMovies);
 
-        router.get("/random", (req, res) => {
-            res.send({ movie: movieController.getRandomMovie() });
-        });
+        router.get("/random", movieController.getRandomMovie);
 
-        router.get("/search", (req, res) => {
-            const identifiedMovie = movieController.search(req.query.title);
+        router.get("/search", movieController.search);
 
-            if (!!identifiedMovie) {
-                res.send({ movie: identifiedMovie });
-            } else {
-                res.status(404).send({ message: "Movie not found" });
-            }
-        });
+        router.get("/:id", movieController.getById);
 
-        router.get("/:id", (req, res) => {
-            const identifiedMovie = movieController.getById(req.params.id);
-
-            if (!!identifiedMovie) {
-                res.send({ movie: identifiedMovie });
-            } else {
-                res.status(404).send({ message: "Movie not found" });
-            }
-        });
-
-        router.post("/", (req, res) => {
-            movieController.create(req.body.title);
-            res.status(201).send({ result: "Movie was created" });
-        });
+        router.post("/", movieController.create);
 
         // other routes
     ```
@@ -536,27 +513,50 @@ npm install --save random
         import random from "random";
         import { movies } from "../models/movies.js";
 
-        const getMovies = () => {
-            return movies;
-        };
+        const getMovies = (req, res) => {
+            res.send({records: movies});
+        }
 
-        const getRandomMovie = () => {
-            const rnd = random.int(0, movies.length - 1);
-            return movies[rnd];
-        };
+        const getRandomMovie = (req, res) => {
+            const randomIndex = random.int(0, movies.length - 1);
+            res.send({ movie: movies[randomIndex] });
+        }
 
-        const search = (title) => {
-            return movies.find(movie => movie.includes(title));
-        };
+        const search = (req, res) => {
+            // accesarea parametrilor de tip query
+            const requestedTitle = req.query.title;
+            const identifiedMovie = movies.find(movie => movie.includes(requestedTitle));
 
-        const getById = (id) => {
-            return movies[id];
-        };
-
-        const create = (title) => {
-            if (!movies.includes(title)) {
-                movies.push(title);
+            if (identifiedMovie) {
+                res.send({ movie: identifiedMovie });
+            } else {
+                res.status(404).send({ message: "Movie not found" });
             }
+        }
+
+        const getById = (req, res) => {
+            // accesarea parametrilor de tip path
+            const id = req.params.id;
+            // vom considera ca id-ul este indexul elementului în cadrul array-ului movies
+            const identifiedMovie = movies[id];
+
+            if(identifiedMovie) {
+                res.send({movie: identifiedMovie});
+            } else {
+                res.status(404).send({ message: "Movie not found" });
+            }
+        }
+
+        const create = (req, res) => {
+            // accesarea parametrilor de tip body
+            const newMovie = req.body.title;
+
+            // dacă filmul nu există deja, îl adăugăm
+            if(!movies.includes(newMovie)) {
+                movies.push(newMovie);
+            }
+
+            res.status(201).send({result: "Movie was created"});
         };
 
         // other methods
