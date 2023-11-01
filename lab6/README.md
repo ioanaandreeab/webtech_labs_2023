@@ -28,6 +28,10 @@
 
     6.2 [Organizare după feature](#62-organizare-dup%C4%83-feature)
 
+    6.3 [Organizarea proiectului curent și Express Router](#63-organizarea-proiectului-curent-%C8%99i-express-router)
+
+7. [Middlewares](#7-middlewares)
+
 ## 1. Server HTTP (Recapitulare)
 
 - HTTP este un protocol de tip _client-server_, ce funcționează printr-un schimb de mesaje inițiat de către _client_ (un **request**), la care _serverul_ răspunde (**response**)
