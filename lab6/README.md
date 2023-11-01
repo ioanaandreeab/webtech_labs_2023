@@ -1,4 +1,4 @@
-Seminar 6 - Server HTTP folosind Express.js
+# Seminar 6 - Server HTTP folosind Express.js
 
 ### Conținut
 
