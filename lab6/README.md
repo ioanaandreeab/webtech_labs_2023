@@ -417,7 +417,7 @@ npm install --save random
         }
 
         res.status(201).send({result: "Movie was created"});
-});
+    });
 ```
 - Folosind exemplele anterioare, **încearcă să definești singur două endpoint-uri noi**:
 
@@ -490,8 +490,100 @@ npm install --save random
 - Pentru a putea separa rutele de controllere și a le importa, ulterior, în fișierul principal, vom folosi _Express Router_, cu ajutorul căruia vom putea împărți fișierul main.js în 3 fișiere distincte:
 
     - routes/movies.js
+    ```js
+        import express from 'express';
+        import * as movieController from "../controllers/movies.js";
+
+        export const router = express.Router();
+
+        router.get("/", (req, res) => {
+            res.send({ records: movieController.getMovies() });
+        });
+
+        router.get("/random", (req, res) => {
+            res.send({ movie: movieController.getRandomMovie() });
+        });
+
+        router.get("/search", (req, res) => {
+            const identifiedMovie = movieController.search(req.query.title);
+
+            if (!!identifiedMovie) {
+                res.send({ movie: identifiedMovie });
+            } else {
+                res.status(404).send({ message: "Movie not found" });
+            }
+        });
+
+        router.get("/:id", (req, res) => {
+            const identifiedMovie = movieController.getById(req.params.id);
+
+            if (!!identifiedMovie) {
+                res.send({ movie: identifiedMovie });
+            } else {
+                res.status(404).send({ message: "Movie not found" });
+            }
+        });
+
+        router.post("/", (req, res) => {
+            movieController.create(req.body.title);
+            res.status(201).send({ result: "Movie was created" });
+        });
+
+        // other routes
+    ```
     - controllers/movies.js
+    ```js
+        import random from "random";
+        import { movies } from "../models/movies.js";
+
+        const getMovies = () => {
+            return movies;
+        };
+
+        const getRandomMovie = () => {
+            const rnd = random.int(0, movies.length - 1);
+            return movies[rnd];
+        };
+
+        const search = (title) => {
+            return movies.find(movie => movie.includes(title));
+        };
+
+        const getById = (id) => {
+            return movies[id];
+        };
+
+        const create = (title) => {
+            if (!movies.includes(title)) {
+                movies.push(title);
+            }
+        };
+
+        // other methods
+
+        export {
+            getMovies,
+            getRandomMovie,
+            search,
+            getById,
+            create
+        }  
+    ```
     - main.js
+    ```js
+        import express from 'express';
+        import {router as moviesRouter} from './routes/movies.js';
+
+        const PORT = 8080;
+
+        const app = express();
+        app.use(express.json());
+
+        // atașarea rutelor specifice unui film
+        app.use("/movie", moviesRouter);
+
+        app.listen(PORT, () => console.log(`Server started on http://localhost:${PORT}`));
+    ```
 
 - Obținem, astfel, un proiect mai bine organizat care, pe măsură ce vor fi adăugate funcționalități și entități noi se va extinde pe _orizontală_ (mai multe fișiere), contrar exemplului anterior când s-ar fi extins pe _verticală_ (un fișier foarte lung)
 
