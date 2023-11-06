@@ -2,9 +2,12 @@
 
 ## Tema curentă:
 - [Tema 1](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework1)
+
+## Proiect:
+- [Formular pentru repository proiecte](https://forms.gle/Qpwh6suvGRp944wF8)
 ## Ultimul seminar:
 
-- [Seminar 5 - Programare asincronă în JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab5)
+- [Seminar 6 - Server HTTP folosind Express.js](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab6)
 
 ## Toate seminarele:
 
