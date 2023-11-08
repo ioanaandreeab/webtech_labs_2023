@@ -111,7 +111,7 @@
 - În general, atunci când vorbim despre REST, o facem în contextul unui REST API, motiv pentru care este important să înțelegem exact ce reprezintă un _API_, concept corelat cu ideea de _endpoint_
 
 - **API** (Application Programming Interface)
-	- Este un ansamblu de comenzi, funcții ori protocoale care au rolul unui intermediar pentru comunicarea dintre două comunicări
+	- Este un ansamblu de comenzi, funcții ori protocoale care au rolul unui intermediar pentru comunicarea dintre două aplicații
 	- Furnizează o metodă standardizată pentru interacțiunea cu un sistem sau serviciu
 	- Poate să includă mai multe endpoint-uri care permit accesul la diferite resurse sau funcționalități
 
