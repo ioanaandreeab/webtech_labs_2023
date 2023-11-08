@@ -197,24 +197,24 @@
 - Pentru a ne conecta la o bază de date, vom adăuga un nou fișier, _config.js_, în directorul **models** la nivelul căruia vom defini minimul necesar pentru conectare:
 
 ```js
-	import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize";
 
-	export const db = new Sequelize({
-		// specificam tipul bazei de date pe care o vom utiliza
-		dialect: "sqlite",
-		// fisierul in care vor fi stocate datele va fi generat la pornirea aplicatiei
-		storage: "storage.db" 
-	});
+export const db = new Sequelize({
+	// specificam tipul bazei de date pe care o vom utiliza
+	dialect: "sqlite",
+	// fisierul in care vor fi stocate datele va fi generat la pornirea aplicatiei
+	storage: "storage.db" 
+});
 
-	// metoda ce va fi apelata pentru a pregati conexiunea la baza de date
-	//  metoda este declarată async deoarece operațiunile authenticate și sync sunt asincrone și folosim keyword-ul await
-	//      pentru a aștepta finalizarea execuției
-	export const synchronizeDatabase = async () => {
-		// verifica conexiunea la baza de date
-		await db.authenticate();
-		// creeaza / actualizeaza tabelele la nivelul bazei de date
-		await db.sync();
-	};
+// metoda ce va fi apelata pentru a pregati conexiunea la baza de date
+//  metoda este declarată async deoarece operațiunile authenticate și sync sunt asincrone și folosim keyword-ul await
+//      pentru a aștepta finalizarea execuției
+export const synchronizeDatabase = async () => {
+	// verifica conexiunea la baza de date
+	await db.authenticate();
+	// creeaza / actualizeaza tabelele la nivelul bazei de date
+	await db.sync();
+};
 ```
 - Pe lângă configurarea generală a bazei de date, vom defini o entitate care să descrie resursa **Movie** pe care am reprezentat-o, anterior, sub forma unui array și care va avea structura:
 
@@ -230,87 +230,87 @@
 
 - Pentru a defini entitatea folosind Sequelize vom rescrie conținutul fișierului deja existent _movies.js_ și vom adăuga implementarea:
 ```js
-	// importarea bazei de date definite in fisierul config.js
-	import { db } from "./config.js";
-	// importarea tipurilor de date suportate de sequelize
-	import { DataTypes } from "sequelize";
+// importarea bazei de date definite in fisierul config.js
+import { db } from "./config.js";
+// importarea tipurilor de date suportate de sequelize
+import { DataTypes } from "sequelize";
 
-	// vom sterge implementarea anterioara dupa ce vom actualiza codul utilizat in serviciul movies.js
-	export const movies = ["My Neighbor Totoro", "Soul", "Hamilton", "Spider-Man: Across the Spider-Verse"];
+// vom sterge implementarea anterioara dupa ce vom actualiza codul utilizat in serviciul movies.js
+export const movies = ["My Neighbor Totoro", "Soul", "Hamilton", "Spider-Man: Across the Spider-Verse"];
 
-	// definirea unei tabele noi cu numele Movie
-	export const Movie = db.define("Movie", {
-		id: {
-			// tipul unui camp
-			type: DataTypes.INTEGER,
-			// cheie primara
-			primaryKey: true,
-			// autoincrement
-			autoIncrement: true
-		},
-		title: {
-			type: DataTypes.STRING,
-			// constrangere de camp nenul
-			allowNull: false
-		},
-		year: {
-			type: DataTypes.INTEGER,
-			allowNull: false,
-			// validarea ca valoarea minima ce poate fi stocata sa fie mai mare de 1900
-			validate: {
-				min: 1900
-			}
-		},
-		director: {
-			type: DataTypes.STRING,
-			allowNull: false
-		},
-		genre: {
-			type: DataTypes.STRING
-		},
-		synopsis: {
-			// utilizarea unui tip de data ce permite inserarea unui text de mari dimensiuni
-			type: DataTypes.TEXT
-		},
-		duration: {
-			// utilizarea unui tip de data eficient, in concordanta cu plaja de valori ale campului
-			type: DataTypes.TINYINT
-		},
-		poster: {
-			type: DataTypes.STRING
+// definirea unei tabele noi cu numele Movie
+export const Movie = db.define("Movie", {
+	id: {
+		// tipul unui camp
+		type: DataTypes.INTEGER,
+		// cheie primara
+		primaryKey: true,
+		// autoincrement
+		autoIncrement: true
+	},
+	title: {
+		type: DataTypes.STRING,
+		// constrangere de camp nenul
+		allowNull: false
+	},
+	year: {
+		type: DataTypes.INTEGER,
+		allowNull: false,
+		// validarea ca valoarea minima ce poate fi stocata sa fie mai mare de 1900
+		validate: {
+			min: 1900
 		}
-	}, 
-	{
-		indexes: [
-			{
-				// definirea unei constrangeri de unicitate pe baza tripletei titlu, an, regizor
-				unique: true,
-				fields: ['title', 'year', 'director']
-			}
-		]
-	});
+	},
+	director: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
+	genre: {
+		type: DataTypes.STRING
+	},
+	synopsis: {
+		// utilizarea unui tip de data ce permite inserarea unui text de mari dimensiuni
+		type: DataTypes.TEXT
+	},
+	duration: {
+		// utilizarea unui tip de data eficient, in concordanta cu plaja de valori ale campului
+		type: DataTypes.TINYINT
+	},
+	poster: {
+		type: DataTypes.STRING
+	}
+}, 
+{
+	indexes: [
+		{
+			// definirea unei constrangeri de unicitate pe baza tripletei titlu, an, regizor
+			unique: true,
+			fields: ['title', 'year', 'director']
+		}
+	]
+});
 ```
 
 - Dacă rulăm acum aplicația, nu vom observa nicio diferență momentan, deoarece, deși definite, baza de date și modelul Movie nu au fost încă invocate în mod direct, lucru pe care îl vom face apelând metoda _synchronizeDatabase_ în entrypoint-ul aplicației
 
 ```js
-	// start listening for connections
-	import { synchronizeDatabase } from "./models/config.js";
-	// .....
-	// vom stoca la nivelul variabilei server configurarea serverului returnata de catre metoda listen
-	//      metoda este async deoarece, în interior, vom folosi keyword-ul await pe metoda synchronizeDatbase pentru a aștepta finalizarea
-	//          procesului de sincronizare
-	const server = app.listen(PORT, async () => {
-		try {
-			// apelăm metoda ce va sincroniza modelele definite în cadrul aplicației cu baza de date
-			await synchronizeDatabase();
-			console.log(`Server started on http://localhost:${PORT}`);
-		} catch (err) {
-			console.log("There was an error with the database connection");
-			// daca apare o eroare in momentul sincronizarii bazei de date, vom opri aplicatia
-			server.close();
-		}
-	});
+// start listening for connections
+import { synchronizeDatabase } from "./models/config.js";
+// .....
+// vom stoca la nivelul variabilei server configurarea serverului returnata de catre metoda listen
+//      metoda este async deoarece, în interior, vom folosi keyword-ul await pe metoda synchronizeDatbase pentru a aștepta finalizarea
+//          procesului de sincronizare
+const server = app.listen(PORT, async () => {
+	try {
+		// apelăm metoda ce va sincroniza modelele definite în cadrul aplicației cu baza de date
+		await synchronizeDatabase();
+		console.log(`Server started on http://localhost:${PORT}`);
+	} catch (err) {
+		console.log("There was an error with the database connection");
+		// daca apare o eroare in momentul sincronizarii bazei de date, vom opri aplicatia
+		server.close();
+	}
+});
 ```
 
 - În momentul repornirii aplicației, vom observa în consolă query-urile executate de către Sequelize pentru a genera tabela Movie la nivelul bazei de date, unde vom regăsi, pe lângă câmpurile configurate explicit, și două câmpuri administrative adăugate automat: _createdAt_ și _updatedAt_
@@ -329,70 +329,70 @@ Executing (default): CREATE UNIQUE INDEX `movies_title_year_director` ON `Movies
 - Actualizăm, pe rând, fiecare metodă, observând modul în care putem insera, actualiza, extrage și șterge date folosind entitatea Movie
 
 ```js
-	import {Movie} from "../models/movies.js";
+import {Movie} from "../models/movies.js";
 
-	const getMovies = async (req, res) => {
-		const movies = await Movie.findAll();
-		res.status(200).send({movies});
+const getMovies = async (req, res) => {
+	const movies = await Movie.findAll();
+	res.status(200).send({movies});
+}
+
+const getById = async(req, res) => {
+	try {
+		const movie = await Movie.findByPk(req.params.id);
+		if (movie) {
+			res.status(200).send({movie: movie});
+		} else {
+			res.status(404).send({message: "movie not found."});
+		}
+	} catch (err) {
+		res.status(500).send({message: "server error", err: err})
 	}
+}
 
-	const getById = async(req, res) => {
-		try {
-			const movie = await Movie.findByPk(req.params.id);
-			if (movie) {
-				res.status(200).send({movie: movie});
-			} else {
-				res.status(404).send({message: "movie not found."});
-			}
-		} catch (err) {
-			res.status(500).send({message: "server error", err: err})
+const create = async (req, res) => {
+	//  campurile existente in interiorul parametrilui primit trebuie sa aiba acelasi nume precum campurile din tabela
+	//  altfel, Sequelize le va ignora si va incerca sa introduca doar acele field-uri pentru care poate sa asigure identitatea
+	const movie = req.body;
+	await Movie.create(movie);
+
+	res.status(201).send({message: "Movie was created"});
+};
+
+const update = async (req, res) => {
+	try {
+		const movie = await Movie.findByPk(req.params.id);
+		if (movie) {
+			const updatedMovie = await movie.update(req.body);
+			res.status(200).send({movie: updatedMovie});
+		} else {
+			res.status(404).send({message: "movie not found."});
 		}
+	} catch (err) {
+		res.status(500).send({message: "server error", err: err})
 	}
+};
 
-	const create = async (req, res) => {
-		//  campurile existente in interiorul parametrilui primit trebuie sa aiba acelasi nume precum campurile din tabela
-		//  altfel, Sequelize le va ignora si va incerca sa introduca doar acele field-uri pentru care poate sa asigure identitatea
-		const movie = req.body;
-		await Movie.create(movie);
-
-		res.status(201).send({message: "Movie was created"});
-	};
-
-	const update = async (req, res) => {
-		try {
-			const movie = await Movie.findByPk(req.params.id);
-			if (movie) {
-				const updatedMovie = await movie.update(req.body);
-				res.status(200).send({movie: updatedMovie});
-			} else {
-				res.status(404).send({message: "movie not found."});
-			}
-		} catch (err) {
-			res.status(500).send({message: "server error", err: err})
+const remove = async (req, res) => {
+	try {
+		const movie = await Movie.findByPk(req.params.id);
+		if (movie) {
+			await movie.destroy();
+			res.status(200).send({message: "deleted movie"});
+		} else {
+			res.status(404).send({message:"movie not found"});
 		}
-	};
+	} catch(err) {
+		res.status(500).send({message: "server error", err:err})
+	}
+};
 
-	const remove = async (req, res) => {
-		try {
-			const movie = await Movie.findByPk(req.params.id);
-			if (movie) {
-				await movie.destroy();
-				res.status(200).send({message: "deleted movie"});
-			} else {
-				res.status(404).send({message:"movie not found"});
-			}
-		} catch(err) {
-			res.status(500).send({message: "server error", err:err})
-		}
-	};
-
-	export {
-		getMovies,
-		getById,
-		create,
-		update,
-		remove
-	};
+export {
+	getMovies,
+	getById,
+	create,
+	update,
+	remove
+};
 ```
 
 - Observăm că structura rutelor nu a fost afectată, motiv pentru care, cu excepția body-ului trimis în metodele de creare și de actualizare, API-ul păstrează aceeași interfață
