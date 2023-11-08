@@ -124,10 +124,6 @@
 
 - În esență, API-ul definește regulile și interfața generală pentru comunicarea cu un sistem informatic, în timp ce endpoint-urile reprezintă locațiile specifice în cadrul API-ului unde pot fi accesate resurse sau efectuate diferite operații
 
-- **Exercițiu**: pornind de la [versiunea curentă a aplicației](), încearcă să refactorizezi totul astfel încât să respecte principiile REST enumerate anterior
-
-	- nu te teme să ștergi rute și funcționalități dacă acestea nu sunt necesare - atunci când folosim un sistem de versionare cum este git codul șters nu este niciodată pierdut, în cazul în care vom avea nevoie de el mai târziu
-
 ## 2. Persistența datelor
 
 - Un avantaj oferit de implementarea unui API REST este obținerea unui grad ridicat de concordanță între modul în care datele sunt reprezentate în cadrul serverului și a modului în care acestea vor fi expuse clienților, motiv pentru care modelarea resurselor devine și mai importantă
@@ -416,7 +412,7 @@ export {
 	- poster: string
 
 - Pentru fiecare entitate trebuie să implementezi câte un endpoint care să permită:
-	- listarea (cu suport pentru filtrare)
+	- listarea
 	- extragerea datelor despre o înregistrare individuală
 	- crearea unei înregistrări
 	- actualizarea unei înregistrări
