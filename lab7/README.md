@@ -394,7 +394,7 @@ export {
 - Observăm că structura rutelor nu a fost afectată, motiv pentru care, cu excepția body-ului trimis în metodele de creare și de actualizare, API-ul păstrează aceeași interfață
 	- Folosește Postman pentru a executa request-uri și extensia SQLite pentru a observa datele la nivelul bazei de date pe măsură ce sunt create și actualizate
 
-🤔 Sequelize are foarte multe funcționalități ce pot simplifica construirea și executarea query-urilor - citește mai multe în documentația oficială
+🤔 Sequelize are foarte multe funcționalități ce pot simplifica construirea și executarea query-urilor - citește mai multe în [documentația oficială](https://sequelize.org/docs/v6/getting-started/)
 
 ## 3. Lucru individual
 
