@@ -5,13 +5,17 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node main.js"
+    "start": "nodemon main.js"
   },
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
     "express": "^4.18.2",
-    "random": "^4.1.0"
+    "sequelize": "^6.34.0",
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
