@@ -49,7 +49,7 @@
 - În continuare vom adăuga entitatea **Collection** și toate componentele necesare pentru implementarea unor endpoint-uri _RESTful_ plecând de la această entitate
 
 - Pași de urmat:
-    - **descarcă** [forma curentă a aplicației](https://github.com/ioanaandreeab/webtech_labs_2023/releases/tag/app-after-lab7)
+    - **descarcă** [forma curentă a aplicației](https://github.com/ioanaandreeab/webtech_labs_2023/releases/tag/app-after-lab7-with-index-router)
     - în directorul _app_ **instalează modulele necesare**, specificate în fișierul _package.json_
         - fișierul package.json conține deja toate dependențele necesare, e nevoie să rulezi o singură comandă :)
     - **definește entitatea** după structura:
