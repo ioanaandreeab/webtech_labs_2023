@@ -1,5 +1,5 @@
 import express from 'express';
-import {router as moviesRouter} from './routes/movies.js';
+import {router as indexRouter} from './routes/index.js';
 import {synchronizeDatabase} from './models/config.js';
 
 const PORT = 8080;
@@ -7,8 +7,8 @@ const PORT = 8080;
 const app = express();
 app.use(express.json());
 
-// atașarea rutelor specifice unui film
-app.use("/movies", moviesRouter);
+// atasarea routerului exportat de fisierul de agregare a rutelor
+app.use("/", indexRouter);
 
 const server = app.listen(PORT, async () => {
 	try {
