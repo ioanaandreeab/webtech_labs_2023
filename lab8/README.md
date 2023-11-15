@@ -2,9 +2,22 @@
 
 ### Conținut
 
-1. Recapitulare back-end
-2. Lucru individual
+1. [Recapitulare back-end](#1-recapitulare-back-end)
+2. [Lucru individual](#2-lucru-individual)
+3. [Relațiile dintre entități](#3-rela%C8%9Biile-%C3%AEntre-entit%C4%83%C8%9Bi)
 
+    3.1 [One-to-One](#31-one-to-one)
+
+    3.2 [One-to-Many/Many-to-One](#32-one-to-manymany-to-one)
+
+    3.3 [Many-to-Many](#33-many-to-many)
+4. [Relația dintre entitățile Movie și Collection](#4-rela%C8%9Bia-dintre-entit%C4%83%C8%9Bile-movie-%C8%99i-collection)
+
+    4.1 [Structura bazei de date](#41-structura-bazei-de-date)
+
+    4.2 [Implementarea relației](#42-implementarea-rela%C8%9Biei)
+
+5. [Lucru individual 2](#5-lucru-individual-2)
 
 ## 1. Recapitulare back-end
 
@@ -167,7 +180,6 @@ Movie.belongsToMany(Collection, {through: "movie_collections"});
 Collection.belongsToMany(Movie, {through: "movie_collections"});
 ```
 - Similar, se poate defini orice tip de relație din lista celor menționate anterior
-
 
 ### 5. Lucru individual 2
 - Încearcă să implementezi relația de tipul _Many-to-Many_ dintre entitățile **Movie** și **Collection** și apoi să modifici controllerele celor două entități pentru a returna, atunci când este nevoie, pe lângă entitatea principală, și entitatea asociată, similar cu modelul discutat în cadrul seminarului
