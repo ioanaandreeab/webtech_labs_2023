@@ -2,7 +2,7 @@
 
 ### Conținut
 
-1. Front-end - noțiuni de bază
+1. Front-end - componente
 
     1.1 HTML
     
@@ -17,7 +17,7 @@
 4. Lucru individual - interfață client pentru introducerea și vizualizarea filmelor
 
 
-## 1. Front-end - noțiuni de bază
+## 1. Front-end - componente
 
 - Am discutat în primele seminare despre modelul _client-server_ și posibilitatea de a executa cod JavaScript atât în interiorul browserului, cât și prin intermediul unui environment care permite acest lucru (node.js)
 - Ne amintim astfel că orice aplicație web are 2 părți componente - **back-end** & **front-end**
