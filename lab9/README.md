@@ -40,7 +40,7 @@
 ![front-end & back-end](https://a.storyblok.com/f/42126/dd3f75afe5/frontend-vs-backend-overview.png/m/1200x0/filters:quality(70)/)
 
 - **Front-end-ul** reprezintă partea vizibilă și interactivă a unei aplicații web sau a unui site
-    - Este ceea ce utilizatorii văd și elementul cu care interacționează cu atunci când accesează o platformă online
+    - Este ceea ce utilizatorii văd și elementul cu care interacționează atunci când accesează o platformă online
 
 - Acest aspect al dezvoltării web se concentrează pe **proiectarea și implementarea elementelor grafice**, a **interfeței utilizatorului** și a **funcționalităților** cu care utilizatorii interacționează direct
 
