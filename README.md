@@ -7,7 +7,7 @@
 - [Formular pentru repository proiecte](https://forms.gle/Qpwh6suvGRp944wF8)
 ## Ultimul seminar:
 
-- [Seminar 8 - Recapitulare back-end & relațiile dintre entități](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab8)
+- [Seminar 9 - Front-end - noțiuni de bază](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab9)
 
 ## Toate seminarele:
 
