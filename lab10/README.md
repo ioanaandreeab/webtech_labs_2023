@@ -209,7 +209,11 @@
 
 - Pornind de la **[forma actuală a aplicației](../app/front-end/)**, încearcă să adaugi stilizarea necesară pentru elemente, layout-ul paginii și poziționarea elementelor în pagină pentru a obține un rezultat cât mai apropiat de cel din mockup :)
 
-    - **Notă**: Urmărește cu atenție și interacțiunile elementelor din meniu cu pagina și replică tranzițiile la diferitele secțiuni din pagină
+    - **Notă**: Urmărește cu atenție și interacțiunile elementelor din pagină și încearcă să implementezi întocmai
+
+        - Fereastra de dialog care apare deasupra paginii la click pe butonul _"Add a movie"_ poartă denumirea de **modală**; te poți folosi [de acest exemplu](https://www.w3schools.com/howto/howto_css_modals.asp) pentru a o implementa
+
+        - Nu uita să adaugi acțiunea de ștergere la click pe butonul _"X"_ corespunzător pentru fiecare film, apelând endpoint-ul potrivit din backend și făcând refresh ulterior pentru a reflecta modificările în lista
 
 ## 6. Extra practice
 
