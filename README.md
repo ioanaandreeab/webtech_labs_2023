@@ -7,7 +7,7 @@
 - [Formular pentru repository proiecte](https://forms.gle/Qpwh6suvGRp944wF8)
 ## Ultimul seminar:
 
-- [Seminar 9 - Front-end - noțiuni de bază](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab9)
+- [Seminar 10 - Utilizarea CSS pentru implementarea interfețelor grafice](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab10)
 
 ## Toate seminarele:
 
@@ -21,6 +21,9 @@
 - [Seminar 8 - Recapitulare back-end & relațiile dintre entități](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab8)
 
 - [Seminar 9 - Front-end - noțiuni de bază](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab9)
+
+- [Seminar 10 - Utilizarea CSS pentru implementarea interfețelor grafice](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab10)
+
 
 ## Toate temele:
 - [Tema 1 - JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework1)
