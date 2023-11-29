@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import {router as indexRouter} from './routes/index.js';
 import {synchronizeDatabase} from './models/config.js';
 import { Movie } from './models/movies.js';
@@ -18,6 +19,7 @@ Collection.belongsTo(Person);
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // atasarea routerului exportat de fisierul de agregare a rutelor
 app.use("/", indexRouter);
