@@ -1,8 +1,15 @@
+import { Op } from "sequelize";
 import { movies } from "../helpers/movies.js";
 import  {Movie} from "../models/movies.js";
 
 const getMovies = async (req, res) => {
-    const movies = await Movie.findAll();
+	const titleQuery = req.query.title;
+    const where = titleQuery ? {
+		title: {
+			[Op.like]: `%${titleQuery}%`
+		}
+	} : {};
+    const movies = await Movie.findAll({where: where});
     res.status(200).send({records: movies});
 }
 
