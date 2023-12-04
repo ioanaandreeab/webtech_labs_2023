@@ -364,7 +364,9 @@ export default App;
         }
 
         const editMovie = (movie) => {
-            axios.put(`${SERVER_URL}/movies/${movie.id}`, movie)
+            const movieParams = {...movie};
+            delete movieParams.id;
+            axios.put(`${SERVER_URL}/movies/${movie.id}`, movieParams)
             .then(() => getMovies())
             .catch(err => console.log(err));
         }
