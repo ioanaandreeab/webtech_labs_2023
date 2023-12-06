@@ -1,7 +1,7 @@
 # Seminare Tehnologii Web
 
 ## Tema curentă:
-- [Tema 2](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework2)
+- [Tema 3 - REST](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework3)
 
 ## Proiect:
 - [Formular pentru repository proiecte](https://forms.gle/Qpwh6suvGRp944wF8)
@@ -28,3 +28,4 @@
 ## Toate temele:
 - [Tema 1 - JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework1)
 - [Tema 2 - JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework2)
+- [Tema 3 - REST](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework3)
