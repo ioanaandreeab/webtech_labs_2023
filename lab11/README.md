@@ -4,7 +4,7 @@
 
 1. [React 101](#1-react-101)
     
-    1.1 [Componente - definire, state și props](#11-componente---definirestate-%C8%99i-props)
+    1.1 [Componente - definire, state și props](#11-componente---definire-state-%C8%99i-props)
 
     1.2 [Virtual DOM](#12-virtual-dom)
 
@@ -23,7 +23,7 @@
 
 - React folosește formatul **JSX** (_JavaScript XML_) pentru a descrie structura interfeței de utilizator
 
-    - Vom observa în secțiunile următoare care sunt caracteristicile sintaxei, însă, ce este de menționat din start este faptul că aceasta **permite scrierea codului JavaScript în cadrul tag-urilor de HTML** pentru o mai simplă dezvoltare și înțelegere a codului
+    - Vom observa în secțiunile următoare care sunt caracteristicile sintaxei, însă, ce este de menționat din start este faptul că aceasta **permite scrierea HTML în JavaScript** pentru o mai simplă dezvoltare și înțelegere a codului
 
 - Deși modul în care sunt scrise fișierele este diferit față de a folosi Vanilla JavaScript (JavaScript pur), trebuie să notăm faptul că aplicațiile React sunt **compilate**, **rezultând un fișier principal JavaScript** care este interpetat de browser în același fel ca orice alt fișier JavaScript
 
@@ -33,7 +33,7 @@
 
 🤔 [Aici](https://www.youtube.com/watch?v=Tn6-PIqc4UM) un clip despre React în 100 de secunde
 
-### 1.1 Componente - definire,state și props
+### 1.1 Componente - definire, state și props
 
 - O componentă React este un **fragment reutilizabil de cod** ce definește o interfață grafică, ori o parte a acesteia, izolând astfel părți ale aplicației
 
@@ -100,7 +100,7 @@
 
     - O componentă React este desenată în pagină
 
-    - Un element din state-ul său se schimbă
+    - Un element din state-ul sau prop-urile sale se schimbă
 
     - Schimbarea state-ului sau a prop-urilor determină re-randarea componentei, pentru a reflecta noua stare
     
@@ -149,6 +149,8 @@
 ### 1.4 Hooks
 
 - **Hook-urile** sunt **funcții**, introduse o dată cu versiunea _16.8_ a React, care **permit**, printre altele, **replicarea caracteristicilor componentelor bazate pe clase** (_state, lifecycle methods_)
+
+![Lifecycle methods ca hook-uri](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bsk4y_rRxmX_Qtol3H3caw.png)
 
 - Cele mai importante hooks pe care le vom folosi sunt _useState_ și _useEffect_
 
