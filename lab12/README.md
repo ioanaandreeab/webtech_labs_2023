@@ -2,24 +2,24 @@
 
 ### Conținut
 
-1. React Router
+1. [React Router](#1-react-router)
 
-    1.1 Rutarea tradițională VS rutarea în aplicația client
+    1.1 [Rutarea tradițională VS rutarea în aplicația client](#11-rutarea-tradi%C8%9Bional%C4%83-vs-rutarea-%C3%AEn-aplica%C8%9Bia-client)
 
-    1.2 React Router
+    1.2 [React Router](#12-react-router)
 
 
-2. Modalități de gestionare a stării globale
+2. [Modalități de gestionare a stării globale](#2-modalit%C4%83%C8%9Bi-de-gestionare-a-st%C4%83rii-globale)
 
-    2.1 Prop drilling
+    2.1 [Prop drilling](#21-prop-drilling)
 
-    2.2 Redux
+    2.2 [Redux](#22-redux)
 
-3. Definirea unor rute pentru aplicația pentru gestiunea filmelor
+3. [Definirea unor rute pentru aplicația pentru gestiunea filmelor](#3-definirea-unor-rute-pentru-aplica%C8%9Bia-pentru-gestiunea-filmelor)
 
-4. Definirea unui context Redux pentru aplicația pentru gestiunea filmelor
+4. [Definirea unui context Redux pentru aplicația pentru gestiunea filmelor](#4-definirea-unui-context-redux-pentru-aplica%C8%9Bia-pentru-gestiunea-filmelor)
 
-5. Lucru individual
+5. [Lucru individual](#5-lucru-individual)
 
 ## 1. React Router
 
