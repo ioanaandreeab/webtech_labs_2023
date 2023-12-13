@@ -305,19 +305,20 @@ npm install --save @reduxjs/toolkit react-redux
       movies: [],
     },
     reducers: {
-      addMovie: (state, action) => {
-        state.movies.push(action.payload);
-      },
-      setMovies: (state, action) => {
-        state.movies = action.payload;
-      },
+        // state-ul este imutabil, deci reducerii trebuie sa reconstruiasca, pentru orice actiune, state-ul pe baza valorilor anterioare si a payload-ului curent
+        addMovie: (state, action) => {
+            return { movies: [...state.movies, action.payload] }
+        },
+        setMovies: (state, action) => {
+            return { movies: [...action.payload] };
+        },
     },
   });
 
-  // export the actions
+  // exportarea actiunilor
   export const { addMovie, setMovies } = moviesSlice.actions;
 
-  // Export the reducer
+  // exportarea reducerului
   export default moviesSlice.reducer;
   ```
 
