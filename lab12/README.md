@@ -406,7 +406,7 @@ reportWebVitals();
 
 - **React Router**
   - Făcând modificările necesare pentru pagini și componente, încearcă să pasezi parametri către rute și să redirecționezi utilizatorul, la click pe un card corespunzător unui film, către pagina filmului respectiv
-    - ruta ta va trebui să arate, de exemplu, astfel ``` \movies\1 ```,
+    - ruta ta va trebui să arate, de exemplu, astfel ``` /movies/1 ```,
     unde 1 este id-ul corespunzător filmului
   - Încearcă să implementezi același mecanism de rutare și pentru colecții și să apelezi endpointurile necesare din backend pentru a direcționa utilizatorul conform flow-ului **colecții -> colecție selectată -> lista de filme corespunzătoare colecției -> film**
 
