@@ -1,4 +1,7 @@
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { Movies } from './pages/Movies';
+import { NotFound } from './pages/NotFound';
+import { Home } from './pages/Home';
 import './App.css';
 
 function App() {
@@ -7,7 +10,13 @@ function App() {
       <div class="header">
         <div class="app-title">action!</div>
       </div>
-      <Movies/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/movies" element={<Movies/>}/>
+          <Route path="*" element={<NotFound/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
