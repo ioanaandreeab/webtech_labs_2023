@@ -2,6 +2,7 @@
 
 ## Tema curentă:
 - [Tema 3 - REST](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework3)
+- [Tema 4 - React](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework4)
 
 ## Proiect:
 - [Formular pentru repository proiecte](https://forms.gle/Qpwh6suvGRp944wF8)
@@ -32,3 +33,4 @@
 - [Tema 1 - JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework1)
 - [Tema 2 - JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework2)
 - [Tema 3 - REST](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework3)
+- [Tema 4 - React](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework4)
