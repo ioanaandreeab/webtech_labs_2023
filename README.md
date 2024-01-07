@@ -29,6 +29,8 @@
 
 - [Seminar 12 - React Router & Redux](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab12)
 
+- [Seminar 13 - Utilizarea librăriilor de componente (Material UI)](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/lab13)
+
 ## Toate temele:
 - [Tema 1 - JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework1)
 - [Tema 2 - JavaScript](https://github.com/ioanaandreeab/webtech_labs_2023/tree/main/homework2)
