@@ -1,4 +1,4 @@
-# Seminar 13 - Utilizarea librăriilor de componente (Material UI)
+# Seminar 13 - Utilizarea bibliotecilor de componente (Material UI)
 
 ### Conținut
 
@@ -6,13 +6,17 @@
 
 2. [Actualizarea aplicațiiei folosind Material UI](#2-actualizarea-aplica%C8%9Biiei-folosind-material-ui)
 
-3. [Lucru individual](#3-lucru-individual)
+3. [Bonus - utilizarea tabelelor](#3-bonus---utilizarea-tabelelor)
+
+4. [PrimeReact](#4-primereact)
+
+5. [Lucru individual](#5-lucru-individual)
 
 ## 1. Material UI
 
 - Adesea, pentru a facilita dezvoltarea aplicațiilor web, programatorii pot folosi, pentru interfețele utilizator, o bibliotecă externă pentru componente
 
-- O astfel de abordare asigură cooerență în ceea ce privește aspectul vizual al aplicației, întrucât componentele care sunt importate din librărie vin alături de reguli de stil definite
+- O astfel de abordare asigură coerență în ceea ce privește aspectul vizual al aplicației, întrucât componentele care sunt importate din bibliotecă vin alături de reguli de stil definite
 
 - Una dintre alegerile populare pentru React (și nu numai) este **Material UI**
 
@@ -167,9 +171,273 @@ const MovieCard = ({movie, onDelete, onEdit}) => {
 export {MovieCard};
 ```
 
-## 3. Lucru individual
+## 3. Bonus - utilizarea tabelelor
 
-- Pentru a te familiariza mai bine cu utilizarea librăriei Material UI încearcă să înlocuiești și restul componentelor din aplicație cu componente exportate de Material UI
+- Pe lângă componente de bază, Material UI oferă multe componente smart, care, pe lângă un aspect specific, prezintă și o serie de funcționalități deja implementate
+
+- Pentru a observa un exemplu, vom integra componenta [Data Grid](https://mui.com/x/react-data-grid/), ce permite afișarea datelor într-un tabel, însă oferă, în mod implicit, posibilitatea de a pagina, sorta și filtra datele afișate, precum și de a ascunde dinamic coloanele afișate
+
+- Vom avea nevoie de un pachet ce conține implementarea tabelului și de un pachet ce conține icon-urile definite de Material
+```
+npm install --save @mui/x-data-grid @mui/icons-material
+```
+
+- Pentru a simplifica integrarea tabelului, vom defini o nouă componentă, *MovieTable* și un fișier de stil în care vom adăuga două clase
+
+- _src/components/MovieTable.jsx_
+```js
+import React from "react";
+import { DataGrid, GridActionsCellItem } from "@mui/x-data-grid";
+import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+
+import "./MovieTable.css";
+
+const MovieTable = ({ movies, deleteMovie }) => {
+    // configurarea coloanelor
+    const columns = [
+        { 
+            field: "id", 
+            headerName: "ID", 
+            flex: 0.1, align: 'center', 
+            headerClassName: "table-header", 
+            headerAlign: "center" 
+        },
+        { 
+            field: "title", 
+            headerName: "Title", 
+            flex: 1,
+            align: 'center', 
+            headerClassName: "table-header", 
+            headerAlign: "center" 
+        },
+        { 
+            field: "director", 
+            headerName: "Director", 
+            flex: 1, 
+            align: 'center', 
+            headerClassName: "table-header", 
+            headerAlign: "center" 
+        },
+        {
+            field: "year",
+            headerName: "Year",
+            type: "number",
+            flex: 0.5,
+            align: 'center',
+            headerClassName: "table-header",
+            headerAlign: "center"
+        },
+        { 
+            field: "genre", 
+            headerName: "Genre", 
+            flex: 0.5, 
+            align: 'center', 
+            headerClassName: "table-header", 
+            headerAlign: "center" 
+        },
+        {
+            field: "duration",
+            headerName: "Duration",
+            type: "number",
+            flex: 0.5,
+            align: 'center',
+            headerClassName: "table-header",
+            headerAlign: "center"
+        },
+        {
+            field: "actions",
+            type: "actions",
+            headerName: "Remove",
+            align: "center",
+            headerClassName: "table-header",
+            flex: 0.5,
+            // configurarea butoanelor cu actiuni
+            getActions: ({ id }) => {
+                return ([
+                    <GridActionsCellItem
+                        icon={<DeleteIcon />}
+                        label="Delete"
+                        onClick={() => {
+                            if (window.confirm("Do you want to delete this movie?")) {
+                                deleteMovie({ id: id });
+                            };
+                        }}
+                        color="inherit"
+                    />
+                ]);
+            }
+        }
+    ];
+
+    return (
+        <div className="table-container">
+            {/* utilizarea DataGrid */}
+            <DataGrid rows={movies} columns={columns} />
+        </div>
+    );
+}
+
+export { MovieTable };
+```
+
+- _src/components/MovieTable.css_
+```css
+.table-container {
+    height: 350px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: white;
+}
+
+.table-header {
+    background-color: whitesmoke;
+}
+```
+
+- De asemenea, vom defini o altă componentă denumită _MovieList_ în care vom muta afișarea listei cu filme
+    - _src/components/MovieList.jsx_
+```js
+import React from 'react';
+import { MovieCard } from './MovieCard';
+
+const MovieList = ({ movies, editMovie, deleteMovie }) => {
+    return (
+        <div id="moviesContainer">
+            {movies.map((movie, index) => (
+                <MovieCard movie={movie} key={index} onDelete={deleteMovie} onEdit={editMovie}/>
+            ))}
+        </div>
+    );
+}
+
+export { MovieList };
+```
+
+- În pagina _Movies_ vom adăuga un mecanism ce ne va permite să afișam, condițional, unul dintre cele două moduri de vizualizare
+    - _src/pages/Movies.jsx_
+```js
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+
+import { MovieCard } from '../components/MovieCard';
+
+import './Movies.css';
+import { AddMovieModal } from '../components/AddMovieModal';
+import { MovieList } from '../components/MovieList';
+import { MovieTable } from '../components/MovieTable';
+
+const SERVER_URL = "http://localhost:8080";
+
+const Movies = () => {
+    // declaram o variabila state pentru a stoca filmele - inițial este un array gol
+    const [movies, setMovies] = useState([]);
+    // declaram o variabila state pentru a stoca titlul filmului cautat de utilizator
+    const [queryTitle, setQueryTitle] = useState(null);
+    // declaram o variabila state pentru a determina daca afisam sau nu modala
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    // definirea unui nou state care va reflecta modul de vizualizare selectat, valoarea default fiind cea de lista
+    const [viewMode, setViewMode] = useState("list");
+
+    const getMovies = () => {
+        const queryParams = new URLSearchParams();
+        
+        if(queryTitle) {
+            queryParams.append("title", queryTitle);
+        }
+
+        // apelam metoda expusa de backend pentru a prelua filmele si le setam in state
+        axios.get(`${SERVER_URL}/movies?` + queryParams)
+        .then(res => res.data)
+        .then(data => setMovies(data.records));
+    };
+
+    const addMovie = (movie) => {
+        axios.post(`${SERVER_URL}/movies`, movie)
+            .then(() => getMovies())
+            .catch(err => console.log(err));
+    }
+
+    const editMovie = (movie) => {
+        const movieParams = {...movie};
+        delete movieParams.id;
+        axios.put(`${SERVER_URL}/movies/${movie.id}`, movieParams)
+        .then(() => getMovies())
+        .catch(err => console.log(err));
+    }
+
+    const deleteMovie = (movie) => {
+        axios.delete(`${SERVER_URL}/movies/${movie.id}`)
+        .then(() => getMovies())
+        .catch(err => console.log(err));
+    }
+
+    useEffect(() => {
+        // in momentul in care pagina este adaugata in DOM
+        // se preiau datele din backend
+        getMovies();
+    }, []);
+
+    const onChangeQueryTitle = (event) => {
+        // preluarea valorii introduse de utilizator pentru filmul cautat
+        const searchedMovieTitle = event.target.value;
+        // setarea valorii in state
+        setQueryTitle(searchedMovieTitle);
+    }
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
+
+
+    const switchView = () => {
+        // metoda switchView va actualiza modul de vizualizare printr-un pseudo mecanism de "toggle"
+        setViewMode(viewMode === "list" ? "table" : "list");
+    }
+
+    return (
+        <div>
+            <div className="container">
+                <h3>All movies</h3>
+                <div className="toolbar">
+                    <input onChange={onChangeQueryTitle} id="search" className="searchbar custom-text-input" type="text" placeholder="Search for a movie" />
+                    <button className="custom-button" onClick={() => getMovies()}>Search</button>
+                    <button className="custom-button" onClick={openModal}>Add a movie</button>
+                    {/* noul buton ce va permite schimbarea modurilor de vizualizare, apeland metoda switchView primita ca props */}
+                    <button className="custom-button" onClick={() => switchView()}>Switch view</button>
+                </div>
+                {/* in functie de valoarea proprietatii viewMode, una dintre cele doua componenta de vizualizare va fi afisata */}
+                {viewMode === "list" && <MovieList movies={movies} deleteMovie={deleteMovie} editMovie={editMovie} />}
+                {viewMode === "table" && <MovieTable movies={movies} deleteMovie={deleteMovie} />}
+            </div>
+            {/* randare conditionala */}
+            {isModalOpen && <AddMovieModal onAddMovie={addMovie} closeModal={closeModal} />}
+        </div>
+    )
+};
+
+export {Movies};
+```
+
+## 4. PrimeReact
+- O altă bibliotecă de componente vizuale foarte utilizată în aplicațiile React este [PrimeReact](https://primereact.org/), ce prezintă atât un aspect diferit față de Material UI, cât și componente cu diferite funcționalități și o filosofie de utilizare diferită
+
+- Urmărește clipurile de mai jos pentru a vedea cum poți utiliza PrimeReact pentru a implementa un tabel similar cu cel definit anterior
+    - [Integrarea unui tabel](https://www.youtube.com/watch?v=gpIXwZZxKws)
+    - [Paginarea și filtrarea datelor din tabel](https://www.youtube.com/watch?v=YjN0cq2BO6k)
+    - [Sortarea datelor din tabel](https://www.youtube.com/watch?v=n-xsJh0Xi1Y)
+
+- În plus, pe lângă bibliotecile "tradiționale" de componente, ce adesea oferă programatorilor o variantă îmbunătățită a elementelor native din browser, există biblioteci ce simplifică implementarea unor scenarii particulare, cum ar fi desenarea unei hărți sau a unui grafic 
+
+🤔 Urmărește clipul de mai jos pentru a vedea cum poți utiliza Google Charts într-o aplicație React
+    - [Utilizare Google Charts](https://www.youtube.com/watch?v=ss2Xui0NT-U)
+
+## 5. Lucru individual
+
+- Pentru a te familiariza mai bine cu utilizarea bibliotecii Material UI încearcă să înlocuiești și restul componentelor din aplicație cu componente exportate de Material UI
 
 - Poți găsi lista de componente [aici](https://mui.com/material-ui/all-components/) :)
 

@@ -5,6 +5,8 @@ import { MovieCard } from '../components/MovieCard';
 
 import './Movies.css';
 import { AddMovieModal } from '../components/AddMovieModal';
+import { MovieList } from '../components/MovieList';
+import { MovieTable } from '../components/MovieTable';
 
 const SERVER_URL = "http://localhost:8080";
 
@@ -15,6 +17,8 @@ const Movies = () => {
     const [queryTitle, setQueryTitle] = useState(null);
     // declaram o variabila state pentru a determina daca afisam sau nu modala
     const [isModalOpen, setIsModalOpen] = useState(false);
+    // definirea unui nou state care va reflecta modul de vizualizare selectat, valoarea default fiind cea de lista
+    const [viewMode, setViewMode] = useState("list");
 
     const getMovies = () => {
         const queryParams = new URLSearchParams();
@@ -70,6 +74,12 @@ const Movies = () => {
         setIsModalOpen(false);
     }
 
+
+    const switchView = () => {
+        // metoda switchView va actualiza modul de vizualizare printr-un pseudo mecanism de "toggle"
+        setViewMode(viewMode === "list" ? "table" : "list");
+    }
+
     return (
         <div>
             <div className="container">
@@ -78,13 +88,12 @@ const Movies = () => {
                     <input onChange={onChangeQueryTitle} id="search" className="searchbar custom-text-input" type="text" placeholder="Search for a movie" />
                     <button className="custom-button" onClick={() => getMovies()}>Search</button>
                     <button className="custom-button" onClick={openModal}>Add a movie</button>
+                    {/* noul buton ce va permite schimbarea modurilor de vizualizare, apeland metoda switchView primita ca props */}
+                    <button className="custom-button" onClick={() => switchView()}>Switch view</button>
                 </div>
-                <div id="moviesContainer">
-                {/* sintaxa de JSX, pentru fiecare film din lista este afisata o componenta de tip MovieCard */}
-                {movies.map((movie, index) => (
-                    <MovieCard movie={movie} key={index} onDelete={deleteMovie} onEdit={editMovie}/>
-                ))}
-                </div>
+                {/* in functie de valoarea proprietatii viewMode, una dintre cele doua componenta de vizualizare va fi afisata */}
+                {viewMode === "list" && <MovieList movies={movies} deleteMovie={deleteMovie} editMovie={editMovie} />}
+                {viewMode === "table" && <MovieTable movies={movies} deleteMovie={deleteMovie} />}
             </div>
             {/* randare conditionala */}
             {isModalOpen && <AddMovieModal onAddMovie={addMovie} closeModal={closeModal} />}
