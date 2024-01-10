@@ -58,9 +58,9 @@ app.get('/food-items-ex', async (req, res) => {
     // TOPIC: REST
 
     // it should get all food-items in listing
-    // throw server error if it doesn't have shelfNo and shelfNo as parameters
+    // throw server error if it doesn't have shelfNo and shelfSize as parameters
     // it should return an appropiate response if shelfSize is too big
-    // code 200 shoudl be used in case of success
+    // code 200 should be used in case of success
 })
 
 module.exports = app
